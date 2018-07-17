@@ -1,0 +1,57 @@
+{% extends 'home.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+    <title> - Connexion</title>
+{% endblock %}
+
+{% block content %}
+    <section id="formulaires">
+        <div class="inscription">
+            <h3>Connexion</h3>
+            <p>Déjà un compte ?</p>
+            <form action="../../index.php" method="post">
+
+                <div class="center">
+                    <label>Votre pseudo</label>
+                    <input type="text" name="pseudo">
+                </div>
+
+                <div class="center">
+                    <label >Votre mot de passe</label>
+                    <input type="password" name="password">
+                </div>
+                <button type="submit" name="submit">Se connecter</button>
+            </form>
+        </div>
+
+
+        <div class="inscription">
+            <h3>S'inscrire</h3>
+            <p>Pas encore de compte ? Inscrivez-vous</p>
+            <form action="../../index.php" method="post">
+                <div class="center">
+                    <label>Votre pseudo</label>
+                    <input type="text" name="pseudo">
+                </div>
+
+                <div class="center">
+                    <label>Votre e-mail</label>
+                    <input type="email" name="email">
+                </div>
+
+                <div class="center">
+                    <label>Choisissez un mot de passe</label>
+                    <input type="password" name="password">
+                </div>
+
+                <div class="center">
+                    <label>Confirmer votre mot de passe</label>
+                    <input type="password" name="password">
+                </div>
+                <button type="submit" name="submit">Confirmer</button>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

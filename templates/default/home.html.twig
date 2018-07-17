@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            {% block head %}
+                <title>Classe ta croute</title>
+            {% endblock %}
+
+            {% block stylesheets %}
+                <link href="{{ asset('style.css') }}" rel="stylesheet"/>
+            {% endblock %}
+
+            <link href="https://fonts.googleapis.com/css?family=Nunito"/>
+        </head>
+
+        <body>
+            <header>
+                <div id="bandeau">
+                    <div id="connexion">
+                        <h3><a href="{{ path('connection') }}">connexion</a></h3>
+                    </div>
+                </div>
+                <div class="en-tete">
+                    <h1><a href="#">Classe ta croute</a></h1>
+
+                    <nav id="navPrincipale">
+                        <ul>
+                            <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                            <li><a href="{{ path('category') }}">Catégories</a></li>
+                            <li><a href="{{ path('recipe') }}">Recettes</a></li>
+                            <li><a href="{{ path('ingredient') }}">Ingrédients</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            {% block nav %}
+            {% endblock %}
+
+            {% block content %}
+            {% endblock %}
+        </body>
+    </html>
