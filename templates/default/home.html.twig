@@ -17,18 +17,18 @@
             <header>
                 <div id="bandeau">
                     <div id="connexion">
-                        <h3><a href="{{ path('connection') }}">connexion</a></h3>
+                        <h3><a href="{{ path('connection.index') }}">connexion</a></h3>
                     </div>
                 </div>
                 <div class="en-tete">
-                    <h1><a href="#">Classe ta croute</a></h1>
+                    <h1><a href="{{ path('homepage') }}">Classe ta croute</a></h1>
 
                     <nav id="navPrincipale">
                         <ul>
                             <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                            <li><a href="{{ path('category') }}">Catégories</a></li>
-                            <li><a href="{{ path('recipe') }}">Recettes</a></li>
-                            <li><a href="{{ path('ingredient') }}">Ingrédients</a></li>
+                            <li><a href="{{ path('category.index') }}">Catégories</a></li>
+                            <li><a href="{{ path('recipe.index') }}">Recettes</a></li>
+                            <li><a href="{{ path('ingredient.index') }}">Ingrédients</a></li>
                         </ul>
                     </nav>
                 </div>

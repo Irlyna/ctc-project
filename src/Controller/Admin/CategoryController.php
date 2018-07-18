@@ -21,8 +21,6 @@ class CategoryController extends Controller {
      * @Route("/", name="category.index")
      */
     public function indexAction(){
-        return $this->renderView("admin/category.html.twig");
-
-
+        return $this->render("admin/category.html.twig");
     }
 }

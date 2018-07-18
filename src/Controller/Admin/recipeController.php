@@ -2,23 +2,25 @@
 /**
  * Created by PhpStorm.
  * User: Christelle
- * Date: 17/07/2018
- * Time: 20:23
+ * Date: 18/07/2018
+ * Time: 15:24
  */
 
 namespace App\Controller\Admin;
+
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/Connexion");
+ * @Route("/recettes")
  */
-class ConnectionController extends Controller {
+class recipeController extends Controller {
 
     /**
-     * @Route("/", name="connection.index")
+     * @Route("/", name="recipe.index")
      */
     public function indexAction(){
-        return $this->render("admin/connection.html.twig");
+        return $this->render("admin/recipe.html.twig");
     }
 }
