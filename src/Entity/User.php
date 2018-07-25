@@ -5,14 +5,15 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraint;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\Table(name="User")
  */
-class User{
-    const IS_ADMIN = false;
-
+class User implements UserInterface {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -22,6 +23,7 @@ class User{
 
     /**
      * @ORM\Column(type="string", length=40, unique=true)
+     *
      */
     private $username;
 
@@ -36,15 +38,25 @@ class User{
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, unique=true)
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $password;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="user")
      *
      */
     private $recipes;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     //*****************************
     //      CONSTRUCTEUR
@@ -75,7 +87,6 @@ class User{
     public function removeRecipe(Recipe $recipe){
         $this->recipes->removeElement($recipe);
     }
-
     //*****************************
     //      GETTER - SETTER
     //*****************************
@@ -156,11 +167,72 @@ class User{
     }
 
     /**
+     * Get password
+     * @return string
+     */
+    public function getPassword(): ?string {
+        return $this->password;
+    }
+
+    /**
+     * Set password
+     * @param string $password
+     * @return User
+     */
+    public function setPassword($password): User {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
      * @return Collection
      */
     public function getRecipes() {
         return $this->recipes;
     }
 
+    /**
+     * Set role
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles(array $roles): User {
+        $this->roles = $roles;
+        return $this;
+    }
 
+    /**
+     * Get roles
+     * @return array
+     */
+    public function getRoles(){
+        $roles = $this->roles;
+        if(empty($roles)){
+            $roles[] = 'ROLE_USER';
+        }
+
+        //Removes duplicate values from an array
+        return array_unique($roles);
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt() {
+        // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials() {
+        // TODO: Implement eraseCredentials() method.
+    }
 }

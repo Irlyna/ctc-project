@@ -6,7 +6,7 @@
  * Time: 15:24
  */
 
-namespace App\Controller\Admin;
+namespace App\Controller\Pages;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,6 +21,18 @@ class recipeController extends Controller {
      * @Route("/", name="recipe.index")
      */
     public function indexAction(){
-        return $this->render("admin/recipe.html.twig");
+        return $this->render("pages/recipe.html.twig");
+    }
+
+    public function addRecipe(){
+
+    }
+
+    public function editRecipe($id){
+
+    }
+
+    public function deleteRecipe($id){
+
     }
 }

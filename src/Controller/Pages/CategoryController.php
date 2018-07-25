@@ -3,22 +3,24 @@
  * Created by PhpStorm.
  * User: Christelle
  * Date: 17/07/2018
- * Time: 20:23
+ * Time: 20:16
  */
 
-namespace App\Controller\Admin;
+namespace App\Controller\Pages;
+
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/Connexion");
+ * @Route("/categories")
  */
-class ConnectionController extends Controller {
+class CategoryController extends Controller {
 
     /**
-     * @Route("/", name="connection.index")
+     * @Route("/", name="category.index")
      */
     public function indexAction(){
-        return $this->render("admin/connection.html.twig");
+        return $this->render("pages/category.html.twig");
     }
 }

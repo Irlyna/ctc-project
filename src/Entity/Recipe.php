@@ -27,7 +27,7 @@ class Recipe{
      * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", inversedBy="recipes")
      * @ORM\JoinTable(name="recipes_ingredients")
      */
-    private $ingredients;
+    private $ingredients = [];
 
     /**
      * @ORM\Column(type="text")

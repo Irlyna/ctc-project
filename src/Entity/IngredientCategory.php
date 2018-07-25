@@ -26,7 +26,7 @@ class IngredientCategory{
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", mappedBy="ingredientCategories")
      */
-    private $ingredients;
+    private $ingredients = [];
 
     //*****************************
     //      CONSTRUCTEUR

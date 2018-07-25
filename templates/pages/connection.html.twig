@@ -1,0 +1,40 @@
+{% extends 'default/layout.html.twig' %}
+
+{% block head %}
+    <title>Connexion</title>
+{% endblock %}
+
+{% block content %}
+    <section id="formulaires">
+        <!--<div class="inscription">
+            <h3>Connexion</h3>
+            <p>Déjà un compte ?</p>
+            <form action="connection.html.twig" method="post">
+
+                <div class="center">
+                    <label>Votre pseudo</label>
+                    <input type="text" name="pseudo">
+                </div>
+
+                <div class="center">
+                    <label >Votre mot de passe</label>
+                    <input type="password" name="password">
+                </div>
+                <button type="submit" name="submit">Se connecter</button>
+            </form>
+        </div> -->
+
+
+        <div class="inscription">
+            <h3>S'inscrire</h3>
+            <p>Pas encore de compte ? Inscrivez-vous</p>
+
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    {{ form_widget(form) }}
+            <input type="submit" value="Ok"/>
+            {{ form_end(form) }}
+
+        </div>
+    </section>
+
+{% endblock %}

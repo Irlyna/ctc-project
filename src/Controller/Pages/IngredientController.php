@@ -6,7 +6,7 @@
  * Time: 15:21
  */
 
-namespace App\Controller\Admin;
+namespace App\Controller\Pages;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -21,6 +21,16 @@ class IngredientController extends Controller {
      * @Route("/", name="ingredient.index")
      */
     public function indexAction(){
-        return $this->render("admin/ingredient.html.twig");
+        return $this->render("pages/ingredient.html.twig");
+    }
+
+    public function editIngredient($ingredient){
+        if(!isset($ingredient)){
+
+        }
+    }
+
+    public function deleteIngredient($ingredient){
+
     }
 }

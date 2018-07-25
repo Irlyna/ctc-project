@@ -136,7 +136,7 @@ form{
     flex-direction: column;
 }
 
-.center{
+form div div{
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -155,7 +155,7 @@ label{
     border-radius: 3px;
 }
 
-.inscription button{
+/* .inscription button{
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -164,7 +164,7 @@ label{
     border: none;
     border-radius: 3px;
     color: white;
-}
+}*/
 
 /*CATEGORIES - RECETTES - INGREDIENTS*/
 .ordreAlpha{
