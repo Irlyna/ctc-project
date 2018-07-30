@@ -68,7 +68,8 @@ class Ingredient
     }
 
     /**
-     * @return mixed
+     * Get ingredientCategories
+     * @return Collection
      */
     public function getIngredientCategories() {
         return $this->ingredientCategories;

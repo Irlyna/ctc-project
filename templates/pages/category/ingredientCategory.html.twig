@@ -1,0 +1,10 @@
+{% block content %}
+    <section class="form">
+        <div class="bg-form">
+            <h3>Ajouter une catégorie d'ingrédient</h3>
+            {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

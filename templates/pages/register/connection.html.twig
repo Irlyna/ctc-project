@@ -1,0 +1,33 @@
+{% extends 'default/layout.html.twig' %}
+
+{% block head %}
+    <title>Connexion</title>
+{% endblock %}
+
+{% block content %}
+
+
+    <section class="form">
+        <div class="bg-form">
+            <h3>Connexion</h3>
+            <p>Déjà un compte ?</p>
+            <form action="{{ path('connection.login') }}" method="post">
+
+                <div class="center">
+                    <label>Votre pseudo</label>
+                    <input placeholder="email" type="text" name="_username">
+                </div>
+
+                <div class="center">
+                    <label for="password">Votre mot de passe</label>
+                    <input placeholder="Votre mot de passe" type="password" name="_password">
+                </div>
+                <input type="hidden" name="_crsf_token" value="{{ csrf_token('authenticate') }}"/>
+                <button type="submit">Se connecter</button>
+            </form>
+
+            <p>Pas encore de compte ? <a href="{{ path('connection.register') }}">Inscrivez-vous</a></p>
+        </div>
+    </section>
+
+{% endblock %}

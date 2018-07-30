@@ -8,12 +8,12 @@
 
 namespace App\Controller\User;
 
-
+use App\Entity\Recipe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/Profil")
+ * @Route("/profil")
  */
 class UserController extends Controller {
     /**
@@ -21,5 +21,15 @@ class UserController extends Controller {
      */
     public function indexAction(){
         return $this->render("user/profil.html.twig");
+    }
+
+    /**
+     * @Route("/mes-recettes", name="user.getRecipe")
+     */
+    public function getRecipeUser(){
+        $em = $this->getDoctrine()->getManager();
+        $recipe = $em->getRepository(Recipe::class)->findByUser();
+
+        return $this->render('user/recipes.html.twig');
     }
 }

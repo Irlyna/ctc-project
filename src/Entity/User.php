@@ -6,14 +6,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraint;
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\Table(name="User")
+ * @ORM\Table(name="users")
  */
-class User implements UserInterface {
+class User implements UserInterface, \Serializable {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -43,7 +42,7 @@ class User implements UserInterface {
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -64,6 +63,7 @@ class User implements UserInterface {
 
     public function __construct() {
         $this->recipes = new ArrayCollection();
+        $this->roles = ['ROLE_USER'];
     }
 
     //*****************************
@@ -128,6 +128,7 @@ class User implements UserInterface {
      */
     public function setName($name): User {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -197,6 +198,16 @@ class User implements UserInterface {
      * @return User
      */
     public function setRoles(array $roles): User {
+        if(!in_array('ROLE_USER', $roles)){
+            $roles[] = 'ROLE_USER';
+        }
+
+        foreach ($roles as $role) {
+            if(substr($role, 0, 5) !== 'ROLE_'){
+                throw new \InvalidArgumentException("Chaque rôle doit commencer par 'ROLE_'");
+            }
+        }
+
         $this->roles = $roles;
         return $this;
     }
@@ -206,33 +217,24 @@ class User implements UserInterface {
      * @return array
      */
     public function getRoles(){
-        $roles = $this->roles;
-        if(empty($roles)){
-            $roles[] = 'ROLE_USER';
-        }
 
-        //Removes duplicate values from an array
-        return array_unique($roles);
+        return $this->roles ;
     }
 
-    /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
-     *
-     * @return string|null The salt
-     */
+
     public function getSalt() {
-        // TODO: Implement getSalt() method.
+
     }
 
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     */
+
     public function eraseCredentials() {
-        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function serialize() {
+        return serialize([$this->id, $this->username, $this->password]);
+    }
+
+    public function unserialize($serialized) {
+        list($this->id, $this->username, $this->password)= unserialize($serialized);
     }
 }

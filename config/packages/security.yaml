@@ -2,9 +2,15 @@ security:
     encoders:
       App\Entity\User: bcrypt
 
+    role_hierarchy:
+      ROLE_ADMIN: ROLE_USER
+      ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     providers:
       database_users:
-        entity: { class: App\Entity\User, property: username }
+        entity:
+          class: App\Entity\User
+          property: email
 
     firewalls:
       dev:
@@ -12,15 +18,14 @@ security:
         security: false
 
       main:
+        provider: database_users
         pattern: ^/
-
         anonymous: true
+        switch_user: ~
 
         form_login:
-          check_path: connection.index
-          login_path: connection.index
-          #Form security
-          csrf_token_generator: security.csrf.token_manager
+          login_path: connection.login
+          check_path: connection.login
           # Default page after success connection
           default_target_path: user.index
 

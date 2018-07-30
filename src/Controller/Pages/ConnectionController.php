@@ -2,69 +2,86 @@
 /**
  * Created by PhpStorm.
  * User: Christelle
- * Date: 17/07/2018
- * Time: 20:23
+ * Date: 25/07/2018
+ * Time: 10:20
  */
 
 namespace App\Controller\Pages;
+
 use App\Entity\User;
-use App\Form\UserFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 /**
- * @Route("/Connexion");
+ * @Route("/connexion")
  */
 class ConnectionController extends Controller {
-
     /**
      * @Route("/", name="connection.index")
-     * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @return RedirectResponse|Response
      */
-   public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder){
-        $user = new User();
-        $form = $this->createForm(UserFormType::class, $user);
+    public function indexAction(){
 
-        $form->handleRequest($request);
+        return $this->render("pages/register/connection.html.twig");
+    }
 
-        if($form->isSubmitted()){
-            dump('ok');die();
-            /*$password = $passwordEncoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($password);
+    /**
+     * @Route("/inscription", name="connection.register")
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function registerAction(UserPasswordEncoderInterface $passwordEncoder){
 
+        if(isset($_POST['submit'])){
+            $user = new User();
+
+            $username = $_POST['username'];
+            $name = $_POST['name'];
+            $firstname = $_POST['firstname'];
+            $email = $_POST['email'];
+            $passwordFirst = $_POST['password-first'];
+            $passwordSecond = $_POST['password-second'];
+
+            if($passwordFirst !== $passwordSecond){
+                //error
+
+                //renvoi du formulaire
+                return $this->render("pages/register/register.html.twig");
+            }else{
+                $user->setPassword($passwordFirst);
+                $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($password);
+            }
+
+            $user->setUsername($username);
+            $user->setName($name);
+            $user->setFirstname($firstname);
+            $user->setEmail($email);
             $user->setRoles(['ROLE_USER']);
 
             $em = $this->getDoctrine()->getManager();
-            $em ->persist($user);
-            $em -> flush();*/
+            $em->persist($user);
+            $em->flush();
 
-           // return $this->redirectToRoute('user.index');
+            return $this->redirectToRoute("homepage", ["message" => "Inscription réussis"]);
         }
-        return $this->render('pages/connection.html.twig', ['form' => $form->createView()]);
-    }
 
-   /* /**
-     * @Route("/", name="connection.register")
-     * @return Response
-     */
-    /*public function loginAction(AuthenticationUtils $helper) : Response{
-        return $this->render('pages/connection.html.twig', [
-            'last_username' => $helper->getLastUsername(),
-            'error'=> $helper->getLastAuthenticationError()
-        ]);
-    }*/
+        return $this->render("pages/register/register.html.twig");
+    }
 
     /**
-     * @Route("/Deconnection", name="connection.logout")
+     * @Route("/connexion", name="connection.login")
      */
-    public function logout(){
-        return $this->render('default/home.html.twig');
+    public function loginAction(AuthenticationUtils $helper){
+        return $this->render("pages/register/connection.html.twig",
+            ['last_username' => $helper->getLastUsername(),
+             'error' => $helper->getLastAuthenticationError()]);
     }
 
+    /**
+     * @Route("/deconnexion", name="connection.logout")
+     */
+    public function logoutAction(){}
 }

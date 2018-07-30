@@ -1,8 +1,7 @@
 {% extends 'default/layout.html.twig' %}
 
 {% block head %}
-    {{ parent() }}
-    <title> - Recettes</title>
+    <title>Catégories</title>
 {% endblock %}
 
 {% block nav %}
@@ -38,4 +37,14 @@
             </ul>
         </nav>
     </div>
+
+    <p>Ajouter une categorie <a href="{{ path('category.index') }}">+</a></p>
+    <section class="form">
+        <div class="bg-form">
+            <h3>Ajouter une catégorie</h3>
+            {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </section>
 {% endblock %}

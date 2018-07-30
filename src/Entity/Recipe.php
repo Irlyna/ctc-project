@@ -41,7 +41,8 @@ class Recipe{
     private $recipeCategories;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="recipes")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="recipes")
+     * @ORM\JoinColumn()
      */
     private $user;
 

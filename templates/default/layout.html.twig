@@ -14,25 +14,30 @@
         </head>
 
         <body>
-            <header>
-                <div id="bandeau">
-                    <div id="connexion">
-                        <h3><a href="{{ path('connection.index') }}">connexion</a></h3>
+                <header>
+                    <div id="bandeau">
+                        <div id="connexion">
+                            {% if not app.user %}
+                                <h3><a href="{{ path('connection.index') }}">connexion</a></h3>
+                            {% else %}
+                                <h3><a href="{{ path('user.index') }}">Profil</a></h3>
+                                <h3><a href="{{ path('connection.logout') }}">déconnexion</a></h3>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-                <div class="en-tete">
-                    <h1><a href="{{ path('homepage') }}">Classe ta croute</a></h1>
+                    <div class="en-tete">
+                        <h1><a href="{{ path('homepage') }}">Classe ta croute</a></h1>
 
-                    <nav id="navPrincipale">
-                        <ul>
-                            <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                            <li><a href="{{ path('category.index') }}">Catégories</a></li>
-                            <li><a href="{{ path('recipe.index') }}">Recettes</a></li>
-                            <li><a href="{{ path('ingredient.index') }}">Ingrédients</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
+                        <nav id="navPrincipale">
+                            <ul>
+                                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                                <li><a href="{{ path('category.index') }}">Catégories</a></li>
+                                <li><a href="{{ path('recipe.index') }}">Recettes</a></li>
+                                <li><a href="{{ path('ingredient.index') }}">Ingrédients</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </header>
 
             {% block nav %}
             {% endblock %}
@@ -40,4 +45,10 @@
             {% block content %}
             {% endblock %}
         </body>
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('Index.js') }}"></script>
     </html>

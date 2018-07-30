@@ -1,5 +1,6 @@
 html{
     background: url("../pictures/background.png");
+    font-family: 'Nunito', sans-serif;
 }
 
 a{
@@ -25,7 +26,6 @@ body{
 header{
     background: #449a92;
     max-width: 100%;
-    font-family: 'Nunito', sans-serif;
     box-shadow: 0 1px 20px #000;
     margin: 0 0 20px 0;
 }
@@ -105,24 +105,24 @@ nav ul li a:hover{
     background: #0f6961;
 }
 
-/*CONNEXION - INSCRIPTION*/
-#formulaires{
-    font-family: 'Nunito', sans-serif;
+/* FORMULAIRES */
+.form{
+    font-size: 0.95rem;
     display: flex;
     justify-content: space-around;
 }
 
-#formulaires h3{
+.form h3{
     color: #737373;
 }
 
-#formulaires p{
+.form p{
     color: grey;
     font-size: 0.9rem;
     text-align: center;
 }
 
-.inscription{
+.bg-form{
     background: rgba(250,250,250,0.95);
     border-radius: 5px;
     margin: 20px;
@@ -130,32 +130,27 @@ nav ul li a:hover{
     width: 45%;
     position: relative;
 }
-form{
-    font-size: 0.95rem;
-    display: flex;
-    flex-direction: column;
-}
 
-form div div{
+.center{
     display: flex;
     justify-content: center;
     flex-direction: row;
     margin: 5px 50px 5px 0;
 }
 
-label{
+.form label{
     width: 30%;
     margin-right: 15px;
     text-align: right;
 }
 
-.inscription input{
+.bg-form input, .bg-form textarea{
     flex: 1;
     border: 1px solid #E1E6FA;
     border-radius: 3px;
 }
 
-/* .inscription button{
+.bg-form button{
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -164,7 +159,7 @@ label{
     border: none;
     border-radius: 3px;
     color: white;
-}*/
+}
 
 /*CATEGORIES - RECETTES - INGREDIENTS*/
 .ordreAlpha{

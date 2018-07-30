@@ -2,41 +2,41 @@
 /**
  * Created by PhpStorm.
  * User: Christelle
- * Date: 17/07/2018
- * Time: 20:16
+ * Date: 30/07/2018
+ * Time: 11:30
  */
 
 namespace App\Controller\Pages;
 
 
-use App\Entity\RecipeCategory;
-use App\Form\CategoryFormType;
+use App\Entity\IngredientCategory;
+use App\Form\IngredientCategoryFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/categories")
+ * @Route("/categories-d-ingredient")
  */
-class CategoryController extends Controller {
+class IngredientCategoryController extends Controller {
 
     /**
-     * @Route("/", name="category.index")
+     * @Route("/ajouter-une-categorie", name="ing.cat.add")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request){
-        $category = new RecipeCategory();
+    public function addCategory(Request $request){
+        $ingCat = new IngredientCategory();
 
-        $form = $this->createForm(CategoryFormType::class, $category);
+        $form = $this->createForm(IngredientCategoryFormType::class, $ingCat);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
+            $em->persist($ingCat);
             $em->flush();
         }
-        return $this->render("pages/category/category.html.twig", ['form' => $form->createView()]);
+        return $this->render('pages/category/ingredientCategory.html.twig');
     }
 }
