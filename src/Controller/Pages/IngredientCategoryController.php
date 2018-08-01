@@ -28,15 +28,15 @@ class IngredientCategoryController extends Controller {
     public function addCategory(Request $request){
         $ingCat = new IngredientCategory();
 
-        $form = $this->createForm(IngredientCategoryFormType::class, $ingCat);
+        $formIngCat = $this->createForm(IngredientCategoryFormType::class, $ingCat);
 
-        $form->handleRequest($request);
+        $formIngCat->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($formIngCat->isSubmitted() && $formIngCat->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->persist($ingCat);
             $em->flush();
         }
-        return $this->render('pages/category/ingredientCategory.html.twig');
+        return $this->render('pages/category/ingredientCategory.html.twig', ['form' => $formIngCat->createView()]);
     }
 }

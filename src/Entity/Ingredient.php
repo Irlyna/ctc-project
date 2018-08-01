@@ -25,13 +25,13 @@ class Ingredient
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\IngredientCategory", inversedBy="ingredients")
+     * @ORM\ManyToMany(targetEntity="App\Entity\IngredientCategory", inversedBy="ingredients", cascade={"persist"})
      * @ORM\JoinTable(name="ingredients_categories")
      */
-    private $ingredientCategories;
+    private $ingredientCategories = [];
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Recipe", mappedBy="ingredients")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Recipe", mappedBy="ingredients", cascade={"persist"})
      */
     private $recipes;
 
@@ -54,17 +54,21 @@ class Ingredient
     }
 
     /**
-     * @return mixed
+     * Get name
+     * @return string
      */
     public function getName() {
         return $this->name;
     }
 
     /**
-     * @param mixed $name
+     * Set name
+     * @param string $name
+     * @return Ingredient
      */
-    public function setName($name): void {
+    public function setName($name): Ingredient {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -76,10 +80,13 @@ class Ingredient
     }
 
     /**
-     * @param mixed $ingredientCategories
+     * Set ingredientCategories
+     * @param IngredientCategory $ingredientCategories
+     * @return Ingredient
      */
-    public function setIngredientCategories($ingredientCategories): void {
-        $this->ingredientCategories = $ingredientCategories;
+    public function setIngredientCategories(IngredientCategory $ingredientCategories): Ingredient {
+        $this->ingredientCategories[] = $ingredientCategories;
+        return $this;
     }
 
     /**

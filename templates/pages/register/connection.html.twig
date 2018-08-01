@@ -23,7 +23,7 @@
                     <input placeholder="Votre mot de passe" type="password" name="_password">
                 </div>
                 <input type="hidden" name="_crsf_token" value="{{ csrf_token('authenticate') }}"/>
-                <button type="submit">Se connecter</button>
+                <button type="submit" name="submit">Se connecter</button>
             </form>
 
             <p>Pas encore de compte ? <a href="{{ path('connection.register') }}">Inscrivez-vous</a></p>

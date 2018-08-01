@@ -181,3 +181,7 @@ nav ul li a:hover{
 .ordreAlpha ul li a:hover{
     background: #0f6961;
     box-shadow:  0 0 10px #0f6961;}
+
+.add{
+    cursor: pointer;
+}

@@ -24,7 +24,7 @@ class IngredientCategory{
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", mappedBy="ingredientCategories")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", mappedBy="ingredientCategories", cascade={"persist"})
      */
     private $ingredients = [];
 
@@ -60,6 +60,16 @@ class IngredientCategory{
      */
     public function setName($name): IngredientCategory {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Set ingredient
+     * @param Ingredient $ingredients
+     * @return IngredientCategory
+     */
+    public function setIngredients(Ingredient $ingredients): IngredientCategory {
+        $this->ingredients[] = $ingredients;
         return $this;
     }
 

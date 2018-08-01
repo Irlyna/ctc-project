@@ -4,4 +4,7 @@ $(document).ready(function () {
         $('form > div > div').addClass('center');
     }
 
+    $( ".add" ).click(function() {
+        $(".form").slideToggle();
+    });
 })

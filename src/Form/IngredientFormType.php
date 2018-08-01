@@ -11,7 +11,7 @@ namespace App\Form;
 
 use App\Entity\Ingredient;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,10 +22,10 @@ class IngredientFormType extends AbstractType {
             ->add('name', TextType::class, [
                 'label' => 'Nom de l\'ingrédient',
                 'attr' => ['placeholder' => 'ex: Fraise ']])
-            ->add('ingredientCategories', CollectionType::class,[
-                'entry_type' => IngredientCategoryFormType::class,
-                'entry_options' => ['label' => false]
-            ]);
+            ->add('IngredientCategories', TextType::class, [
+                'label' => 'Entrer une catégorie d\'ingrédients',
+                'attr' => ['placeholder' => 'ex: Fruit']])
+            ->add('submit', SubmitType::class, ['label'=> 'Envoyer']);
     }
 
     public function configureOptions(OptionsResolver $resolver) {

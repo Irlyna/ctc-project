@@ -10,7 +10,6 @@ namespace App\Controller\Pages;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -45,10 +44,7 @@ class ConnectionController extends Controller {
             $passwordSecond = $_POST['password-second'];
 
             if($passwordFirst !== $passwordSecond){
-                //error
-
-                //renvoi du formulaire
-                return $this->render("pages/register/register.html.twig");
+                return $this->render("pages/register/register.html.twig", ["message" => "Erreur dans le formulaire"]);
             }else{
                 $user->setPassword($passwordFirst);
                 $password = $passwordEncoder->encodePassword($user, $user->getPassword());
@@ -73,6 +69,8 @@ class ConnectionController extends Controller {
 
     /**
      * @Route("/connexion", name="connection.login")
+     * @param AuthenticationUtils $helper
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(AuthenticationUtils $helper){
         return $this->render("pages/register/connection.html.twig",

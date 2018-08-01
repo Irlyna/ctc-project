@@ -10,8 +10,6 @@ namespace App\Controller\Pages;
 
 use App\Entity\Ingredient;
 use App\Entity\IngredientCategory;
-use App\Form\IngredientFormType;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -24,25 +22,55 @@ class IngredientController extends Controller {
      * @Route("/", name="ingredient.index")
      */
     public function indexAction(){
-        return $this->render("pages/ingredient/ingredient.html.twig");
+        $getIngredients = $this->getDoctrine()->getRepository(Ingredient::class)->findAll();
+
+        $ingredients = [];
+        foreach ($getIngredients as $ingredient => $name){
+            $ingredients[] = $name->getName();
+        }
+        return $this->render("pages/ingredient/ingredient.html.twig", ['ingredients' => $ingredients]);
     }
 
     /**
      * @Route("/ajouter-un-ingredient", name="ingredient.addIngredient")
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function addIngredient(Request $request){
-        $ingredient = new Ingredient();
+    public function addIngredient(){
+        if(isset($_POST['submit']) && !empty($_POST)){
 
-        $form = $this->createForm(IngredientFormType::class, $ingredient);
+            $ingredient = new Ingredient();
 
-        $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            
+            $name = $_POST['ingredient'];
+            $ingCat[] = $_POST['ingredientCategory'];
+
+            $em = $this->getDoctrine()->getManager();
+            $getIngredient = $em->getRepository(Ingredient::class)->findOneBy(['name' => $name]);
+
+            if(empty($getIngredient)){
+                $getCategory = $em->getRepository(IngredientCategory::class)->findOneBy(['name' => $ingCat]);
+                if(empty($getCategory)){
+                    foreach ($ingCat as $key){
+                        $category = new IngredientCategory();
+                        $category->setName($key);
+                        $em->persist($category);
+                    }
+                    $em->flush();
+                }else{
+                    $category = $getCategory;
+                }
+                $ingredient->setName($name);
+                $ingredient->setIngredientCategories($category);
+
+                $em->persist($ingredient);
+                $em->flush();
+                return $this->redirectToRoute('ingredient.index', ['message' => 'Votre ingrédient à bien été ajouté']);
+
+            } else{
+                return $this->render("pages/ingredient/ingredient.html.twig", ['message' => "Désolé mais ce fruit existe déjà!"]);
+            }
         }
-        return $this->render("pages/ingredient/addIngredient.html.twig", ['form' => $form->createView()]);
+        return $this->render("pages/ingredient/ingredient.html.twig");
     }
 
     /**

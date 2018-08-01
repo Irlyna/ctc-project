@@ -38,5 +38,30 @@
             </ul>
         </nav>
     </div>
-    <p>Vous ne trouvez pas l'ingrédient? <a href="{{ path('ingredient.addIngredient') }}">Ajoutez le !</a></p>
+    <p>Vous ne trouvez pas l'ingrédient? Ajoutez le ! <span class="add">+</span></p>
+    <section class="form">
+        <div class="bg-form">
+            <h3>Ajouter un ingrédients</h3>
+
+            <form action="{{ path('ingredient.addIngredient') }}" method="post">
+
+                <div class="center">
+                    <label for="ingredient">Nom de l'ingrédient</label>
+                    <input placeholder="Ex: Fraise" type="text" name="ingredient">
+                </div>
+
+                <div class="center">
+                    <label for="ingredientCategory">Catégorie de l'ingredient</label>
+                    <input placeholder="Ex: Fruit" type="text" name="ingredientCategory">
+                </div>
+                <button type="submit" name="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        {%  for ingredient in ingredients %}
+            <p>{{ ingredient }}</p>
+        {% endfor %}
+    </section>
 {% endblock %}
