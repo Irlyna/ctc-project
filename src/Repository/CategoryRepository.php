@@ -19,6 +19,17 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, RecipeCategory::class);
     }
 
+    public function editRecipeCategory($recipeCategoryId){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->update('App:RecipeCategory', 'rc')
+            ->where('rc.id = :recipeCategoryId')
+            ->setParameter('recipeCategoryId', $recipeCategoryId);
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function deleteRecipeCategory($recipeCategoryId){
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();
@@ -27,8 +38,6 @@ class CategoryRepository extends ServiceEntityRepository
             ->where('rc.id = :recipeCategoryId')
             ->setParameter('recipeCategoryId', $recipeCategoryId);
 
-
         return $qb->getQuery()->getResult();
-
     }
 }

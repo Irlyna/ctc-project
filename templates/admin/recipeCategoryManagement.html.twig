@@ -10,10 +10,10 @@
         </thead>
         {% for category in recipeCategories %}
             <tr>
-                <td>{{ category.name }}</td>
+                <td class="editInput">{{ category.name }}</td>
                 <td class="action" align="center">
                     <button type="button">
-                        <a href="">
+                        <a href="{{ path('category.edit', {'recipeCategoryId' : category.id}) }}">
                             <i class="fas fa-user-edit"></i>
                         </a>
                     </button>
