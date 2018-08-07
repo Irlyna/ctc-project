@@ -13,23 +13,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/profil")
+ * @Route("/user")
  */
 class UserController extends Controller {
     /**
      * @Route("/", name="user.index")
      */
     public function indexAction(){
-        return $this->render("user/profil.html.twig");
-    }
-
-    /**
-     * @Route("/mes-recettes", name="user.getRecipe")
-     */
-    public function getRecipeUser(){
         $em = $this->getDoctrine()->getManager();
-        $recipe = $em->getRepository(Recipe::class)->findByUser();
+        $recipes = $em->getRepository(Recipe::class)->findByUser($this->getUser()->getid());
 
-        return $this->render('user/recipes.html.twig');
+        return $this->render('user/profil.html.twig', ['recipes' => $recipes]);
     }
 }

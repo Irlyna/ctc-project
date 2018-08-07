@@ -20,7 +20,7 @@ security:
       main:
         provider: database_users
         pattern: ^/
-        anonymous: true
+        anonymous: ~
         switch_user: ~
 
         form_login:
@@ -34,5 +34,7 @@ security:
           target: homepage
 
     access_control:
+      #Only user and admin can access the pages "/user"
+      - { path: '^/user', roles: ROLE_USER }
       #Only Admin can access the pages "/admin"
       - { path: '^/admin', roles: ROLE_ADMIN }

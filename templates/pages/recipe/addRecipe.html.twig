@@ -1,12 +1,37 @@
-{% extends 'default/layout.html.twig' %}
-
 {% block content %}
-    <section class="form">
-        <div class="bg-form">
+    <section class="form display-form">
+        <div class="bg">
             <h3>Ajouter une recette</h3>
-            {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+            <form action="{{ path('recipe.add') }}" method="post">
+
+                <div class="center">
+                    <label for="name">Nom de votre recette</label>
+                    <input placeholder="Ex: Boeuf bourguignon" type="text" name="name">
+                </div>
+
+                <div class="center">
+                    <label for="ingredient">Ingredient(s) à utiliser</label>
+                    <input placeholder="Ex: Boeuf, carottes ..." type="text" name="ingredient">
+                </div>
+
+                <div class="center">
+                    <label for="ingredientCategory">Catégorie de l'ingredient</label>
+                    <input placeholder="Ex: Fruit" type="text" name="ingredientCategory">
+                </div>
+
+                <div class="center step">
+                    <label for="step">Etape</label>
+                    <input type="text" name="step">
+                </div>
+
+                <div>Ajouter un étape <span class="addStep">+</span></div>
+
+                <div class="center">
+                    <label for="recipeCategory">Catégorie(s) de la recette</label>
+                    <input placeholder="Ex: Fruit" type="text" name="recipeCategory">
+                </div>
+                <button type="submit" name="submit">Envoyer</button>
+            </form>
         </div>
     </section>
 

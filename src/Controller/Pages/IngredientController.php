@@ -64,10 +64,11 @@ class IngredientController extends Controller {
 
                 $em->persist($ingredient);
                 $em->flush();
-                return $this->redirectToRoute('ingredient.index', ['message' => 'Votre ingrédient à bien été ajouté']);
+
+                return $this->redirectToRoute('ingredient.index');
 
             } else{
-                return $this->render("pages/ingredient/ingredient.html.twig", ['message' => "Désolé mais ce fruit existe déjà!"]);
+                return $this->redirectToRoute('ingredient.index');
             }
         }
         return $this->render("pages/ingredient/ingredient.html.twig");

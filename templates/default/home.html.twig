@@ -3,3 +3,18 @@
     {% block head %}
         {{ parent() }}
     {% endblock %}
+
+{% block content %}
+    <div class="display">
+        {% for recipe in recipes %}
+            <div class="bg display-recipe">
+                <h2>{{ recipe.name }}<span class="read-more">+</span></h2>
+                <div class="read-recipe">
+                    <p>{{ recipe.content }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

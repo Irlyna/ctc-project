@@ -1,3 +1,4 @@
+/* GENERAL */
 html{
     background: url("../pictures/background.png");
     font-family: 'Nunito', sans-serif;
@@ -7,19 +8,36 @@ a{
     text-decoration: none;
 }
 
+h2{
+    color: #737373;
+}
+
 h3{
     margin: 0;
 }
 
-.content{
-    max-width: 70%;
-    margin: 0px auto;
+.bg{
+    background: rgba(250,250,250,0.95);
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px 10px 60px 10px;
+    width: 45%;
+    position: relative;
 }
 
 /* BODY */
 body{
     margin: 0;
     padding: 0;
+}
+
+/* CONTAINER */
+#container{
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 /* HEADER */
@@ -29,8 +47,6 @@ header{
     box-shadow: 0 1px 20px #000;
     margin: 0 0 20px 0;
 }
-
-/*INDEX*/
 
 /*CONNEXION*/
 #bandeau{
@@ -60,7 +76,6 @@ header{
 }
 
 /*EN-TETE*/
-
 .en-tete{
     max-width: 80%;
     margin: auto;
@@ -105,60 +120,11 @@ nav ul li a:hover{
     background: #0f6961;
 }
 
-/* FORMULAIRES */
-.form{
-    font-size: 0.95rem;
-    display: flex;
-    justify-content: space-around;
-}
 
-.form h3{
-    color: #737373;
-}
-
-.form p{
-    color: grey;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.bg-form{
-    background: rgba(250,250,250,0.95);
-    border-radius: 5px;
-    margin: 20px;
-    padding: 10px 10px 60px 10px;
-    width: 45%;
-    position: relative;
-}
-
-.center{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin: 5px 50px 5px 0;
-}
-
-.form label{
-    width: 30%;
-    margin-right: 15px;
-    text-align: right;
-}
-
-.bg-form input, .bg-form textarea{
-    flex: 1;
-    border: 1px solid #E1E6FA;
-    border-radius: 3px;
-}
-
-.bg-form button{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 5px;
-    background: grey;
-    border: none;
-    border-radius: 3px;
-    color: white;
+/*INDEX*/
+.content{
+    max-width: 90%;
+    margin: 0px auto;
 }
 
 /*CATEGORIES - RECETTES - INGREDIENTS*/
@@ -182,6 +148,112 @@ nav ul li a:hover{
     background: #0f6961;
     box-shadow:  0 0 10px #0f6961;}
 
-.add{
+/* HOMEPAGE */
+.display{
+    display: inline;
+    width: 60%;
+    justify-content: center;
+    margin: 0px auto;
+}
+
+.display-recipe{
+    width: 100%;
+    padding : 0;
+    position: inherit;
+    list-style-type: none;
+}
+
+.display-recipe h2{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* FORMULAIRES */
+.form{
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form h3{
+    color: #737373;
+}
+
+.form p{
+    color: grey;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 5px 50px 5px 0;
+}
+
+.form label{
+    width: 30%;
+    margin-right: 15px;
+    text-align: right;
+}
+
+.bg input, .bg textarea{
+    flex: 1;
+    border: 1px solid #E1E6FA;
+    border-radius: 3px;
+}
+
+.bg button{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px;
+    background: grey;
+    border: none;
+    border-radius: 3px;
+    color: white;
+}
+
+.add, .read-more{
+    color: white;
     cursor: pointer;
+    background: #d8dbda;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+.add:hover, .read-more:hover{
+    background: grey;
+}
+.addStep{
+    color: white;
+    cursor: pointer;
+    background: grey;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+/* TABLES */
+.tableUser{
+    margin: 0 auto;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+.tableUser caption{
+    color: grey;
+    font-size: x-large;
+    border-radius: 3px 3px 0 0;
+    background: #D8DBDA;
+}
+
+.tableUser th, .tableUser td{
+    vertical-align: center;
+    padding: 5px 0;
+    border: 2px solid #D8DBDA;
+}
+
+.action button{
+    position: inherit;
 }

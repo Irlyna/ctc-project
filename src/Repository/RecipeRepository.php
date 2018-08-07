@@ -19,7 +19,15 @@ class RecipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Recipe::class);
     }
 
-    public function findByUser(){
+    public function findByUser($userId){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->select('r')
+            ->from('App:Recipe', 'r')
+            ->where('r.user = :user_id')->setParameter('user_id', $userId);
+
+        return $qb->getQuery()->getResult();
 
     }
 

@@ -1,3 +1,14 @@
 {% block content %}
-    <p>Vous n'avez pas encore de recettes, <a href="{{ path('recipe.add') }}">ajoutez-en!</a></p>
+    {% if not recipes %}
+        <p>Vous n'avez pas encore de recettes, ajoutez-en! <span class="add">+</span></p>
+
+    {% else  %}
+        <p>Ajouter une recette <span class="add">+</span></p>
+    {% endif %}
+
+    {{ include('pages/recipe/addRecipe.html.twig') }}
+
+    {% for recipe in recipes %}
+        <p>{{ recipe.name }}</p>
+    {% endfor %}
 {% endblock %}

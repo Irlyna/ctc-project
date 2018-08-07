@@ -176,10 +176,12 @@ class Recipe{
 
     /**
      * Set user
-     * @param mixed $user
+     * @param User $user
+     * @return Recipe
      */
-    public function setUser($user): void {
+    public function setUser(User $user): Recipe {
         $this->user = $user;
+        return $this;
     }
 
     /**
