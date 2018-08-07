@@ -25,7 +25,20 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
 
     }
 
-    public function deleteUser(){
+    /**
+     * @param $userId
+     * @return mixed
+     */
+    public function deleteUser($userId){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->delete('App:User', 'u')
+            ->where('u.id = :userId')
+            ->setParameter('userId', $userId);
+
+
+        return $qb->getQuery()->getResult();
 
     }
     /**

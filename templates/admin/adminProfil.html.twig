@@ -28,10 +28,14 @@
                 {% endfor %}
                 <td class="action" align="center">
                     <button type="button">
-                        <i class="fas fa-user-edit"></i>
+                        <a href="{{ path('admin.edit.user', {'userId' : user.id}) }}">
+                            <i class="fas fa-user-edit"></i>
+                        </a>
                     </button>
-                    <button action="{{ path('admin.delete.user') }}" method="post">
-                        <i class="fas fa-trash-alt"></i>
+                    <button>
+                        <a href="{{ path('admin.delete.user', {'userId' : user.id}) }}">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
                     </button>
                 </td>
             </tr>

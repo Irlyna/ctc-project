@@ -7,6 +7,7 @@
  */
 
 namespace App\Controller\Admin;
+use App\Entity\Recipe;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,12 +28,28 @@ class AdminController extends Controller {
     }
 
     /**
-     * @param $id
-     * @Route("/delete-user", name="admin.delete.user")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param $userId
+     * @Route("/edit-user/{userId}", name="admin.edit.user")
      */
-    public function deleteUser(){
-        dump('ca marche ta mere');
-        return $this->render('admin/adminProfil.html.twig');
+    public function editUser($userId){
+
+    }
+
+    /**
+     * @param $userId
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/delete-user/{userId}", name="admin.delete.user")
+     */
+    public function deleteUser($userId){
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->find(User::class, $userId);
+
+        $recipes = $user->getRecipes();
+        foreach ($recipes as $recipe){
+            $em->getRepository(Recipe::class)->deleteRecipe($recipe);
+        }
+        $em->getRepository(User::class)->deleteUser($userId);
+        $em->flush();
+        return $this->redirectToRoute('admin.index');
     }
 }

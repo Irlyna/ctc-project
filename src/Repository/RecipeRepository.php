@@ -31,32 +31,15 @@ class RecipeRepository extends ServiceEntityRepository
 
     }
 
-//    /**
-//     * @return Recipe[] Returns an array of Recipe objects
-//     */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    public function deleteRecipe($recipeId){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->delete('App:Recipe', 'r')
+            ->where('r.id = :recipeId')
+            ->setParameter('recipeId', $recipeId);
 
-    /*
-    public function findOneBySomeField($value): ?Recipe
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+
+        return $qb->getQuery()->getResult();
     }
-    */
 }

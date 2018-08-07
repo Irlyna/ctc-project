@@ -107,7 +107,7 @@ class RecipeController extends Controller {
 
     }
 
-    public function deleteRecipe($id){
+    public function deleteRecipe($RecipeId){
 
     }
 }
