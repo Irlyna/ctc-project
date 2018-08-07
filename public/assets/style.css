@@ -215,7 +215,7 @@ nav ul li a:hover{
     color: white;
 }
 
-.add, .read-more{
+.add, .read-more, .more{
     color: white;
     cursor: pointer;
     background: #d8dbda;
@@ -235,20 +235,23 @@ nav ul li a:hover{
 }
 
 /* TABLES */
-.tableUser{
+table{
     margin: 0 auto;
     padding: 0;
     border-collapse: collapse;
 }
+.tableDisplay{
+    margin: 20px auto;
+}
 
-.tableUser caption{
+table caption{
     color: grey;
     font-size: x-large;
     border-radius: 3px 3px 0 0;
     background: #D8DBDA;
 }
 
-.tableUser th, .tableUser td{
+table th, table td{
     vertical-align: center;
     padding: 5px 0;
     border: 2px solid #D8DBDA;

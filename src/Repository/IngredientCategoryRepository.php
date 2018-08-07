@@ -19,32 +19,14 @@ class IngredientCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, IngredientCategory::class);
     }
 
-//    /**
-//     * @return IngredientCategory[] Returns an array of IngredientCategory objects
-//     */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    public function deleteIngredientCategory($ingredientCategoryId){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->delete('App:IngredientCategory', 'ic')
+            ->where('ic.id = :ingredientCategoryId')
+            ->setParameter('ingredientCategoryId', $ingredientCategoryId);
 
-    /*
-    public function findOneBySomeField($value): ?IngredientCategory
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $qb->getQuery()->getResult();
     }
-    */
 }

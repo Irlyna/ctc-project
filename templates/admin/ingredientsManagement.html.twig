@@ -1,0 +1,37 @@
+{% block content %}
+    <table class="bg tableDisplay tableIngredients">
+        <caption>Gestion des ingrédients</caption>
+
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Categorie(s)</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for ingredient in ingredients%}
+            <tr>
+                <td>{{ ingredient.name }}</td>
+                {% for category in ingredient.ingredientCategories %}
+                    {% if ingredient.ingredientCategories is null %}
+                        <td>-</td>
+                    {% else %}
+                        <td>{{ category.name }}</td>
+                    {% endif %}
+                {% endfor %}
+                <td class="action" align="center">
+                    <button type="button">
+                        <a href="">
+                            <i class="fas fa-user-edit"></i>
+                        </a>
+                    </button>
+                    <button>
+                        <a href="{{ path('ingredient.delete', {'ingredientId' : ingredient.id}) }}">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

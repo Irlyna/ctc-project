@@ -1,0 +1,30 @@
+{%  block content %}
+    <table class="bg tableDisplay tableIngredientCategories">
+        <caption>Gestion des catégories d'ingrédients</caption>
+
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for category in ingredientCategories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td class="action" align="center">
+                    <button type="button">
+                        <a href="">
+                            <i class="fas fa-user-edit"></i>
+                        </a>
+                    </button>
+                    <button>
+                        <a href="{{ path('ing.cat.delete', {'ingredientCategoryId' : category.id}) }}">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -39,4 +39,17 @@ class IngredientCategoryController extends Controller {
         }
         return $this->render('pages/category/ingredientCategory.html.twig', ['form' => $formIngCat->createView()]);
     }
+
+    /**
+     * @param $ingredientCategoryId
+     * @Route("supprime-categorie-ingredient/{ingredientCategoryId}", name="ing.cat.delete")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteIngredientCategory($ingredientCategoryId){
+        $em = $this->getDoctrine()->getManager();
+        $em->find(IngredientCategory::class, $ingredientCategoryId);
+        $em->getRepository(IngredientCategory::class)->deleteIngredientCategory($ingredientCategoryId);
+        $em->flush();
+        return $this->redirectToRoute('admin.index');
+    }
 }

@@ -7,7 +7,10 @@
  */
 
 namespace App\Controller\Admin;
+use App\Entity\Ingredient;
+use App\Entity\IngredientCategory;
 use App\Entity\Recipe;
+use App\Entity\RecipeCategory;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,8 +25,17 @@ class AdminController extends Controller {
      */
     public function indexAction(){
         $em = $this->getDoctrine()->getManager();
+
         $users = $em->getRepository(User::class)->findAll();
-        return $this->render('admin/adminProfil.html.twig', ['users' => $users]);
+        $ingredients = $em->getRepository(Ingredient::class)->findAll();
+        $ingredientCategories = $em->getRepository(IngredientCategory::class)->findAll();
+        $recipeCategories = $em->getRepository(RecipeCategory::class)->findAll();
+
+        return $this->render('admin/adminProfil.html.twig', [
+            'users' => $users,
+            'ingredients' => $ingredients,
+            'ingredientCategories' => $ingredientCategories,
+            'recipeCategories' => $recipeCategories]);
 
     }
 

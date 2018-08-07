@@ -39,4 +39,17 @@ class CategoryController extends Controller {
         }
         return $this->render("pages/category/category.html.twig", ['form' => $form->createView()]);
     }
+
+    /**
+     * @param $recipeCategoryId
+     * @Route("/supprimer-categorie-recette/{recipeCategoryId}", name="category.delete")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteRecipeCategory($recipeCategoryId){
+        $em = $this->getDoctrine()->getManager();
+        $em->find(RecipeCategory::class, $recipeCategoryId);
+        $em->getRepository(RecipeCategory::class)->deleteRecipeCategory($recipeCategoryId);
+        $em->flush();
+        return $this->redirectToRoute('admin.index');
+    }
 }

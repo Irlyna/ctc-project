@@ -82,7 +82,17 @@ class IngredientController extends Controller {
 
     }
 
-    public function deleteIngredient($ingredient){
+    /**
+     * @param $ingredientId
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/supprimer-ingredients/{ingredientId}", name="ingredient.delete")
+     */
+    public function deleteIngredient($ingredientId){
+        $em = $this->getDoctrine()->getManager();
+        $ingredients = $em->find(Ingredient::class, $ingredientId);
 
+        $em->getRepository(Ingredient::class)->deleteIngredient($ingredientId);
+        $em->flush();
+        return $this->redirectToRoute('admin.index');
     }
 }
