@@ -3,19 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="83d90bd8-04fa-4247-8fb3-e3353f8cc250" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Pages/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Pages/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Pages/ConnectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Pages/ConnectionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Pages/IngredientCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Pages/IngredientCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Pages/IngredientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Pages/IngredientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/IngredientCategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/IngredientCategoryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/IngredientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/IngredientRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/ingredientCategoriesManagement.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/ingredientCategoriesManagement.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/recipeCategoryManagement.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/recipeCategoryManagement.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/userManagement.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/userManagement.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,32 +19,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Pages/CategoryController.php">
+      <file leaf-file-name="adminProfil.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/admin/adminProfil.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="59" column="53" selection-start-line="49" selection-start-column="8" selection-end-line="59" selection-end-column="53" />
-              <folding>
-                <element signature="e#128#158#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="692">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IngredientCategoryRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Repository/IngredientCategoryRepository.php">
+      <file leaf-file-name="userManagement.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/admin/userManagement.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="26" column="77" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IngredientCategoryController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/Pages/IngredientCategoryController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+            <state relative-caret-position="22">
+              <caret line="1" column="30" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -63,34 +41,25 @@
         <entry file="file://$PROJECT_DIR$/templates/admin/recipeCategoryManagement.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ingredientCategoriesManagement.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ingredientsManagement.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ingredientCategoriesManagement.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/admin/ingredientCategoriesManagement.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoryRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Repository/CategoryRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="30" column="44" selection-start-line="22" selection-start-column="8" selection-end-line="30" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/Index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="86" selection-start-line="17" selection-start-column="86" selection-end-line="17" selection-end-column="86" />
+            <state relative-caret-position="308">
+              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -170,13 +139,13 @@
         <option value="$PROJECT_DIR$/public/assets/Index.js" />
         <option value="$PROJECT_DIR$/src/Controller/Pages/ConnectionController.php" />
         <option value="$PROJECT_DIR$/src/Controller/Pages/CategoryController.php" />
-        <option value="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" />
         <option value="$PROJECT_DIR$/src/Repository/IngredientRepository.php" />
         <option value="$PROJECT_DIR$/src/Controller/Pages/IngredientController.php" />
         <option value="$PROJECT_DIR$/src/Repository/IngredientCategoryRepository.php" />
-        <option value="$PROJECT_DIR$/templates/admin/recipeCategoryManagement.html.twig" />
-        <option value="$PROJECT_DIR$/templates/admin/ingredientCategoriesManagement.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/Pages/IngredientCategoryController.php" />
+        <option value="$PROJECT_DIR$/templates/admin/recipeCategoryManagement.html.twig" />
+        <option value="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" />
+        <option value="$PROJECT_DIR$/templates/admin/ingredientCategoriesManagement.html.twig" />
       </list>
     </option>
   </component>
@@ -459,12 +428,12 @@
       <workItem from="1533633976333" duration="19745000" />
       <workItem from="1533718510584" duration="5603000" />
       <workItem from="1533738412007" duration="3393000" />
-      <workItem from="1533803217180" duration="9386000" />
+      <workItem from="1533803217180" duration="9727000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253545000" />
+    <option name="totallyTimeSpent" value="253886000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -684,13 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/adminProfil.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/RecipeRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -716,13 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-247">
           <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/userManagement.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="30" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -778,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Repository/IngredientRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
@@ -830,24 +778,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Pages/IngredientCategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/adminProfil.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/userManagement.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="30" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/recipeCategoryManagement.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
-          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/ingredientCategoriesManagement.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/Pages/IngredientCategoryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+        <state relative-caret-position="308">
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
         </state>
       </provider>
     </entry>
