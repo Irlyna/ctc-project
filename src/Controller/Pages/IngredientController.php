@@ -82,12 +82,32 @@ class IngredientController extends Controller {
     public function editIngredient($ingredientId){
         if(isset($_POST['submit'])){
             $em = $this->getDoctrine()->getManager();
-            $ingredientUpdate = $_POST['name'];
+            $ingredient = $em->find(Ingredient::class, $ingredientId);
+            if(isset($_POST['category'])){
+                $ingredientCategoryUpdate = $_POST['category'];
+                $ingCat = $em->getRepository(IngredientCategory::class)->findBy(['name' => $ingredientCategoryUpdate]);
+                if(empty($ingCat) ){
+                    $category = new IngredientCategory();
+                    $category->setName($ingredientCategoryUpdate);
+                    $ingredient->addIngredientCategories($category);
+                    $em->persist($category);
+                }else{
+                    foreach ($ingCat as $key) {
+                        /*Si $key === $ingredient->getIngredientCategories()
+                            -> remove
+                        sinon
+                            ->ajouter
 
-            $em->find(Ingredient::class, $ingredientId);
+                        */
 
-            $em->getRepository(Ingredient::class)->editIngredient($ingredientId, $ingredientUpdate);
+                    }
+                }
+            }
 
+            if(isset($_POST['name'])){
+                $ingredientUpdate = $_POST['name'];
+                $em->getRepository(Ingredient::class)->editIngredient($ingredientId, $ingredientUpdate);
+            }
             $em->flush();
         }
         return $this->redirectToRoute('admin.index');

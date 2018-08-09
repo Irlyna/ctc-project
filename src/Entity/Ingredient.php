@@ -36,7 +36,7 @@ class Ingredient
     private $recipes;
 
     //*****************************
-    //      Constructeur
+    //      CONSTRUCTOR
     //*****************************
 
     public function __construct() {
@@ -44,6 +44,26 @@ class Ingredient
         $this->recipes = new ArrayCollection();
     }
 
+    //*****************************
+    //      METHODS
+    //*****************************
+    /**
+     * Set ingredientCategories
+     * @param IngredientCategory $ingredientCategories
+     * @return Ingredient
+     */
+    public function addIngredientCategories(IngredientCategory $ingredientCategories): Ingredient {
+        $this->ingredientCategories[] = $ingredientCategories;
+        return $this;
+    }
+
+    /**
+     * Remove recipeCategory
+     * @param IngredientCategory $ingredientCategory
+     */
+    public function removeIngredientCategory(IngredientCategory $ingredientCategory){
+        $this->ingredientCategories->removeElement($ingredientCategory);
+    }
     //*****************************
     //      GETTER - SETTER
     //*****************************
@@ -77,16 +97,6 @@ class Ingredient
      */
     public function getIngredientCategories() {
         return $this->ingredientCategories;
-    }
-
-    /**
-     * Set ingredientCategories
-     * @param IngredientCategory $ingredientCategories
-     * @return Ingredient
-     */
-    public function setIngredientCategories(IngredientCategory $ingredientCategories): Ingredient {
-        $this->ingredientCategories[] = $ingredientCategories;
-        return $this;
     }
 
     /**
