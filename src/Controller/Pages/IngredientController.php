@@ -75,11 +75,22 @@ class IngredientController extends Controller {
     }
 
     /**
-     * @Route("/modifier", name="ingredient.edit")
-     * @param $ingredient
+     * @Route("/modifier-ingredient/{ingredientId}", name="ingredient.edit")
+     * @param $ingredientId
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function editIngredient($ingredient){
+    public function editIngredient($ingredientId){
+        if(isset($_POST['submit'])){
+            $em = $this->getDoctrine()->getManager();
+            $ingredientUpdate = $_POST['name'];
 
+            $em->find(Ingredient::class, $ingredientId);
+
+            $em->getRepository(Ingredient::class)->editIngredient($ingredientId, $ingredientUpdate);
+
+            $em->flush();
+        }
+        return $this->redirectToRoute('admin.index');
     }
 
     /**

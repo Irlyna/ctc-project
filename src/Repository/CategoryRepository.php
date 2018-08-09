@@ -19,11 +19,12 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, RecipeCategory::class);
     }
 
-    public function editRecipeCategory($recipeCategoryId){
+    public function editRecipeCategory($recipeCategoryId, $recipeCategoryUpdate){
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();
         $qb
             ->update('App:RecipeCategory', 'rc')
+            ->set('rc.name', $qb->expr()->literal($recipeCategoryUpdate))
             ->where('rc.id = :recipeCategoryId')
             ->setParameter('recipeCategoryId', $recipeCategoryId);
 

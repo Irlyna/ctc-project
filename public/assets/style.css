@@ -235,28 +235,47 @@ nav ul li a:hover{
 }
 
 /* TABLES */
-table{
+.displayData{
     margin: 0 auto;
     padding: 0;
-    border-collapse: collapse;
-}
-.tableDisplay{
-    margin: 20px auto;
-}
-
-table caption{
-    color: grey;
-    font-size: x-large;
-    border-radius: 3px 3px 0 0;
-    background: #D8DBDA;
-}
-
-table th, table td{
-    vertical-align: center;
-    padding: 5px 0;
     border: 2px solid #D8DBDA;
+    border-bottom: none;
+}
+
+.displayData h3{
+    color: grey;
+    background: #D8DBDA;
+    text-align: center;
+}
+
+.displayData h3, .head, .dataContent{
+    border-bottom: 2px solid #D8DBDA;
+}
+
+.head{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dataContent{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dataContent p{
+     margin-left: 10px;
+     flex: 1;
+}
+
+.dataContent input{
+    margin: 10px;
+}
+
+.action{
+    margin: auto 10px;
 }
 
 .action button{
+    margin: 5px;
     position: inherit;
 }

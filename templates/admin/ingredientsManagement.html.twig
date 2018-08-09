@@ -1,37 +1,33 @@
 {% block content %}
-    <table class="bg tableDisplay tableIngredients">
-        <caption>Gestion des ingrédients</caption>
+    <div class="bg displayData">
+        <h3>Gestion des ingrédients</h3>
 
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Categorie(s)</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+        <div class="head">
+            <h4>Nom</h4>
+            <h4>Categorie(s)</h4>
+            <h4>Action</h4>
+        </div>
         {% for ingredient in ingredients%}
-            <tr>
-                <td>{{ ingredient.name }}</td>
-                {% for category in ingredient.ingredientCategories %}
-                    {% if ingredient.ingredientCategories is null %}
-                        <td>-</td>
-                    {% else %}
-                        <td>{{ category.name }}</td>
-                    {% endif %}
-                {% endfor %}
-                <td class="action" align="center">
-                    <button type="button">
-                        <a href="">
-                            <i class="fas fa-user-edit"></i>
-                        </a>
-                    </button>
-                    <button>
-                        <a href="{{ path('ingredient.delete', {'ingredientId' : ingredient.id}) }}">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </button>
-                </td>
-            </tr>
+            <form method="post" action="{{ path('ingredient.edit', {'ingredientId' : ingredient.id}) }}" class="formUpdateData">
+                <div class="dataContent">
+                    <p class="editInput" title="name">{{ ingredient.name }}</p>
+                    {% for category in ingredient.ingredientCategories %}
+                        <p class="editInput" title="category">{{ category.name }}</p>
+                    {% endfor %}
+                    <div class="action" align="center">
+                        <button type="submit" name="submit">
+                            <a href="">
+                                <i class="fas fa-user-edit"></i>
+                            </a>
+                        </button>
+                        <button>
+                            <a href="{{ path('ingredient.delete', {'ingredientId' : ingredient.id}) }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </form>
         {% endfor %}
-    </table>
+    </div>
 {% endblock %}

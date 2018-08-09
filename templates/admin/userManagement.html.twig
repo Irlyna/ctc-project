@@ -1,28 +1,26 @@
 {% block content %}
-    <table class="bg tableDisplay tableUser">
-        <caption>Gestion des utilisateurs</caption>
+    <div class="bg displayData">
+        <h3>Gestion des utilisateurs</h3>
 
-        <thead>
-        <tr>
-            <th>Pseudo</th>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>E-mail</th>
-            <th>Roles</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+        <div class="head">
+            <h4>Pseudo</h4>
+            <h4>Prénom</h4>
+            <h4>Nom</h4>
+            <h4>E-mail</h4>
+            <h4>Roles</h4>
+            <h4>Action</h4>
+        </div>
         {% for user in users%}
             {% if user != app.user %}
-            <tr>
-                <td>{{ user.username }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>{{ user.email }}</td>
+            <div class="dataContent">
+                <p>{{ user.username }}</p>
+                <p>{{ user.name }}</p>
+                <p>{{ user.firstname }}</p>
+                <p>{{ user.email }}</p>
                 {% for role in user.roles %}
-                    <td>{{ role }}</td>
+                    <p>{{ role }}</p>
                 {% endfor %}
-                <td class="action" align="center">
+                <div class="action" align="center">
                     <button type="button">
                         <a href="{{ path('admin.edit.user', {'userId' : user.id}) }}">
                             <i class="fas fa-user-edit"></i>
@@ -33,9 +31,9 @@
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </button>
-                </td>
-            </tr>
+                </div>
+            </div>
             {% endif %}
         {% endfor %}
-    </table>
+    </div>
 {% endblock %}

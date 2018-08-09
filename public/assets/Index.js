@@ -6,17 +6,16 @@ $(document).ready(function () {
         console.log("index : " + display);
     })*/
 
-    //TRANSFORM TD IN INPUT ON CLICK
+    //TRANSFORM P IN INPUT ON CLICK
     $('.editInput').click(function (){
-        let contentTd = $(this).text();
-        console.log(contentTd);
-        $(this).replaceWith(replaceByInput());
-        $('.' + this.classeName + '').val(contentTd);
+        let contentP = $(this).text();
+        $(this).replaceWith(replaceByInput(this));
+        $('.' + this.className + '').val(contentP);
+
     })
 
-    function replaceByInput(){
-        let input = '<td><input type=text class=' + this.className + '></td>';
-        return input;
+    function replaceByInput($item){
+        return '<input type=text class=' + $item.className + ' name=' + $item.title + '>';
     }
 
     //ADD CLASS CENTER FOR DIV ON FORMS

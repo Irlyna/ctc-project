@@ -19,6 +19,18 @@ class IngredientCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, IngredientCategory::class);
     }
 
+    public function editIngredientCategory($ingredientCategoryId, $ingredientCategoryUpdate){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->update('App:IngredientCategory', 'ic')
+            ->set('ic.name', $qb->expr()->literal($ingredientCategoryUpdate))
+            ->where('ic.id = :ingredientCategoryId')
+            ->setParameter('ingredientCategoryId', $ingredientCategoryId);
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function deleteIngredientCategory($ingredientCategoryId){
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();

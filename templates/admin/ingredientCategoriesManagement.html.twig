@@ -1,30 +1,27 @@
 {%  block content %}
-    <table class="bg tableDisplay tableIngredientCategories">
-        <caption>Gestion des catégories d'ingrédients</caption>
+    <div class="bg displayData">
+        <h3>Gestion des catégories d'ingrédients</h3>
 
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Action</th>
-        </tr>
-        </thead>
+        <div class="head">
+            <h4>Nom</h4>
+            <h4>Action</h4>
+        </div>
         {% for category in ingredientCategories %}
-            <tr>
-                <td>{{ category.name }}</td>
-                <td class="action" align="center">
-                    <button type="button">
-                        <a href="">
+            <form method="post" action="{{ path('ing.cat.edit', {'ingredientCategoryId' : category.id}) }}" class="formUpdateData">
+                <div class="dataContent">
+                    <p class="editInput" title="name">{{ category.name }}</p>
+                    <div class="action" align="center">
+                        <button type="submit" name="submit">
                             <i class="fas fa-user-edit"></i>
-                        </a>
-                    </button>
-                    <button>
-                        <a href="{{ path('ing.cat.delete', {'ingredientCategoryId' : category.id}) }}">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </button>
-                </td>
-            </tr>
+                        </button>
+                        <button>
+                            <a href="{{ path('ing.cat.delete', {'ingredientCategoryId' : category.id}) }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </form>
         {% endfor %}
-    </table>
-
+    </div>
 {% endblock %}

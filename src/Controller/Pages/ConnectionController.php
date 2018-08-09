@@ -33,7 +33,7 @@ class ConnectionController extends Controller {
      */
     public function registerAction(UserPasswordEncoderInterface $passwordEncoder){
 
-        if(isset($_POST['submit'])){
+        if(isset($_POST['submit']) && !empty($_POST)){
             $user = new User();
 
             $username = $_POST['username'];

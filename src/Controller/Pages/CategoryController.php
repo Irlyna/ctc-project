@@ -42,14 +42,21 @@ class CategoryController extends Controller {
 
     /**
      * @param $recipeCategoryId
+     * @param $recipeCategoryUpdate
+     * @Route("/modifier-categorie-recette/{recipeCategoryId}", name="category.edit")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @Route("modifier-categorie-recette/{recipeCategoryId}", name="category.edit")
      */
     public function editRecipeCategory($recipeCategoryId){
-        $em = $this->getDoctrine()->getManager();
-        $em->find(RecipeCategory::class, $recipeCategoryId);
-        $em->getRepository(RecipeCategory::class)->editRecipeCategory($recipeCategoryId);
-        $em->flush();
+        if(isset($_POST['submit']) && !empty($_POST)){
+            $em = $this->getDoctrine()->getManager();
+            $recipeCategoryUpdate = $_POST['name'];
+
+            $em->find(RecipeCategory::class, $recipeCategoryId);
+
+            $em->getRepository(RecipeCategory::class)->editRecipeCategory($recipeCategoryId, $recipeCategoryUpdate);
+
+            $em->flush();
+        }
         return $this->redirectToRoute('admin.index');
     }
 
