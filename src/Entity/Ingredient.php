@@ -25,6 +25,17 @@ class Ingredient
     private $name;
 
     /**
+     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\JoinColumn()
+     */
+    private $volume;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $measuringValue = [];
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\IngredientCategory", inversedBy="ingredients", cascade={"persist"})
      * @ORM\JoinTable(name="ingredients_categories")
      */
@@ -88,6 +99,41 @@ class Ingredient
      */
     public function setName($name): Ingredient {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Get volume
+     * @return double
+     */
+    public function getVolume() {
+        return $this->volume;
+    }
+
+    /**Set quantity
+     * @param double $volume
+     * @return Ingredient
+     */
+    public function setVolume($volume): Ingredient {
+        $this->volume = $volume;
+        return $this;
+    }
+
+    /**
+     * Get measuringValue
+     * @return array
+     */
+    public function getMeasuringValue() {
+        return $this->measuringValue;
+    }
+
+    /**
+     * Set measuringValue
+     * @param array $measuringValue
+     * @return Ingredient
+     */
+    public function setMeasuringValue($measuringValue): Ingredient {
+        $this->measuringValue = array_unique($measuringValue);
         return $this;
     }
 

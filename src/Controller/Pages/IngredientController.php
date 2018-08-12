@@ -40,7 +40,6 @@ class IngredientController extends Controller {
 
             $ingredient = new Ingredient();
 
-
             $name = $_POST['ingredient'];
             $ingCat[] = $_POST['ingredientCategory'];
 
@@ -55,7 +54,6 @@ class IngredientController extends Controller {
                         $category->setName($key);
                         $em->persist($category);
                     }
-                    $em->flush();
                 }else{
                     $category = $getCategory;
                 }
@@ -83,23 +81,35 @@ class IngredientController extends Controller {
         if(isset($_POST['submit'])){
             $em = $this->getDoctrine()->getManager();
             $ingredient = $em->find(Ingredient::class, $ingredientId);
+
             if(isset($_POST['category'])){
                 $ingredientCategoryUpdate = $_POST['category'];
-                $ingCat = $em->getRepository(IngredientCategory::class)->findBy(['name' => $ingredientCategoryUpdate]);
-                if(empty($ingCat) ){
+
+                $getIngredientCategory = $em->getRepository(IngredientCategory::class)->findBy([
+                    'name' => $ingredientCategoryUpdate]
+                );
+
+                if(empty($getIngredientCategory) ){
                     $category = new IngredientCategory();
+
                     $category->setName($ingredientCategoryUpdate);
                     $ingredient->addIngredientCategories($category);
+
                     $em->persist($category);
                 }else{
-                    foreach ($ingCat as $key) {
-                        /*Si $key === $ingredient->getIngredientCategories()
-                            -> remove
-                        sinon
-                            ->ajouter
+                    foreach ($getIngredientCategory as $key) {
+                        $category = $key;
+                    }
 
-                        */
+                    $catIng = $ingredient->getIngredientCategories();
+                    foreach ($catIng as $key) {
+                        $categoryOfIngredient = $key;
+                    }
 
+                    if($category !== $categoryOfIngredient){
+                        $ingredient->addIngredientCategories($category);
+                    }else{
+                        $ingredient->removeIngredientCategory($category);
                     }
                 }
             }
