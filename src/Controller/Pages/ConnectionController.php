@@ -43,25 +43,29 @@ class ConnectionController extends Controller {
             $passwordFirst = $_POST['password-first'];
             $passwordSecond = $_POST['password-second'];
 
-            if($passwordFirst !== $passwordSecond){
-                return $this->render("pages/register/register.html.twig", ["message" => "Erreur dans le formulaire"]);
-            }else{
-                $user->setPassword($passwordFirst);
-                $password = $passwordEncoder->encodePassword($user, $user->getPassword());
-                $user->setPassword($password);
-            }
-
-            $user->setUsername($username);
-            $user->setName($name);
-            $user->setFirstname($firstname);
-            $user->setEmail($email);
-            $user->setRoles(['ROLE_USER']);
-
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $findEmailUser = $em->getRepository(User::class)->findBy(['email' => $email]);
 
-            return $this->redirectToRoute("homepage", ["message" => "Inscription réussis"]);
+            if(empty($findEmailUser)){
+                if($passwordFirst !== $passwordSecond){
+                    return $this->render("pages/register/register.html.twig", ["message" => "Erreur dans le formulaire"]);
+                }else{
+                    $user->setPassword($passwordFirst);
+                    $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+                    $user->setPassword($password);
+                }
+
+                $user->setUsername($username);
+                $user->setName($name);
+                $user->setFirstname($firstname);
+                $user->setEmail($email);
+                $user->setRoles(['ROLE_USER']);
+
+                $em->persist($user);
+                $em->flush();
+
+                return $this->redirectToRoute('connection.login', ["message" => "Inscription réussis"]);
+            }
         }
 
         return $this->render("pages/register/register.html.twig");

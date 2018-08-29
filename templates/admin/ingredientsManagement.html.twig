@@ -14,19 +14,27 @@
                     class="formUpdateData">
                 <div class="dataContent">
                     <p class="editInput" title="name">{{ ingredient.name }}</p>
-                    {% for category in ingredient.ingredientCategories %}
-                        <p class="editInput" title="category">{{ category.name }}</p>
-                    {% endfor %}
+
+                    <div class="ingredientCategories">
+                        {% if ingredient.ingredientCategories %}
+                            <p class="display-more">Afficher plus</p>
+                            <div class="categoriesList">
+                                <ul>
+                                {% for category in ingredient.ingredientCategories %}
+                                    <li class="editInput" title="category">{{ category.name }}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <p class="editInput" title="category">Ajouter une catégorie</p>
+                    </div>
+
                     <div class="action" align="center">
-                        <button type="submit" name="submit">
-                            <a href="">
-                                <i class="fas fa-pen"></i>
-                            </a>
+                        <button type="submit" name="modify">
+                            <i class="fas fa-pen"></i>
                         </button>
-                        <button>
-                            <a href="{{ path('ingredient.delete', {'ingredientId' : ingredient.id}) }}">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
+                        <button type="submit" name="delete">
+                            <i class="fas fa-trash-alt"></i>
                         </button>
                     </div>
                 </div>

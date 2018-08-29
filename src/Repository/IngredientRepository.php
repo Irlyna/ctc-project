@@ -19,6 +19,13 @@ class IngredientRepository extends ServiceEntityRepository
         parent::__construct($registry, Ingredient::class);
     }
 
+    public function findAllByLetter($letter){
+    }
+
+    /* UPDATE ingredient
+       SET name = $ingredientUpdate
+       WHERE ingredient.id = $ingredientId
+    */
     public function editIngredient($ingredientId, $ingredientUpdate){
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();
@@ -31,6 +38,8 @@ class IngredientRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /*DELETE FROM ingredient
+      WHERE ingredient.id = $ingredientId */
     public function deleteIngredient($ingredientId){
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();

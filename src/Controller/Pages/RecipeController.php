@@ -37,70 +37,73 @@ class RecipeController extends Controller {
         if(isset($_POST['submit']) && !empty($_POST) && !empty($user= $this->getUser())){
 
             $recipe = new Recipe();
-
             $name = $_POST['name'];
-            $ingredients[] = $_POST['ingredient'];
-            $ingCat[] = $_POST['ingredientCategory'];
+            $ingredients = explode(',',$_POST['ingredient']);
             $step = $_POST['step'];
-            $recipeCategories[] = $_POST['recipeCategory'];
+            $recipeCategories = explode(',',strtolower($_POST['recipeCategory']));
 
 
             $em = $this->getDoctrine()->getManager();
             $getRecipe = $em->getRepository(Recipe::class)->findOneBy(['name' => $name]);
 
             if(empty($getRecipe)){
-                $getIngredients = $em->getRepository(Ingredient::class)->findOneBy(['name' => $ingredients]);
-                $getIngCat = $em->getRepository(IngredientCategory::class)->findOneBy(['name'=>$ingCat]);
-                $getRecipeCat = $em->getRepository(RecipeCategory::class)->findOneBy(['name' => $recipeCategories]);
+                foreach($ingredients as $ingredient){
+                    $getIngredients = $em->getRepository(Ingredient::class)->findOneBy(['name' => $ingredient]);
+                    if(!empty($getIngredients)){
+                        $nameIngredient= strtolower($getIngredients->getName());
 
-                if(empty($getIngCat)){
-                    foreach ($ingCat as $key){
-                        $category = new IngredientCategory();
-                        $category->setName($key);
-                        $em->persist($category);
+                        if(strtolower($ingredient) != $nameIngredient){
+                            $newIngredient = new Ingredient();
+                            $newIngredient->setName($ingredient);
+                            $recipe->addIngredients($newIngredient);
+                            $em->persist($newIngredient);
+                        }else{
+                            $recipe->addIngredients($getIngredients);
+                        }
+                    }elseif(empty($getIngredients)){
+                        $newIngredient = new Ingredient();
+                        $newIngredient->setName($ingredient);
+                        $recipe->addIngredients($newIngredient);
+                        $em->persist($newIngredient);
                     }
-                    $em->flush();
-                }else{
-                    $category = $getIngCat;
+
                 }
-                if(empty($getIngredients)){
-                    foreach ($ingredients as $key){
-                        $ingredient = new Ingredient();
-                        $ingredient->setName($key);
-                        $ingredient->setIngredientCategories($category);
-                        $em->persist($ingredient);
-                    }
-                    $em->flush();
-                }else{
-                    $ingredient = $getIngredients;
-                }
-                if(empty($getRecipeCat)){
-                    foreach ($recipeCategories as $key){
+
+                foreach ($recipeCategories as $category){
+                    $getRecipeCat = $em->getRepository(RecipeCategory::class)->findOneBy(['name' => $category]);
+                    if(!empty($getRecipeCat)){
+                        $nameRecipe= strtolower($getRecipeCat->getName());
+                        if(strtolower($category) != $nameRecipe){
+                            $recipeCategory = new RecipeCategory();
+                            $recipeCategory->setName($category);
+                            $recipe->addRecipeCategory($recipeCategory);
+                            $em->persist($recipeCategory);
+                        }else{
+                            $recipe->addRecipeCategory($getRecipeCat);
+                        }
+                    }elseif(empty($getRecipeCat)){
                         $recipeCategory = new RecipeCategory();
-                        $recipeCategory->setName($key);
+                        $recipeCategory->setName($category);
+                        $recipe->addRecipeCategory($recipeCategory);
                         $em->persist($recipeCategory);
                     }
-                    $em->flush();
-                }else{
-                    $recipeCategory = $getRecipeCat;
+
                 }
 
                 $recipe->setName($name);
-                $recipe->addIngredients($ingredient);
                 $recipe->setContent($step);
-                $recipe->addRecipeCategory($recipeCategory);
                 $recipe->setUser($user= $this->getUser());
                 $em->persist($recipe);
                 $em->flush();
 
-                return $this->redirectToRoute('recipe.index');
+                return $this->redirectToRoute('homepage');
 
             } else{
-                return $this->redirectToRoute('recipe.index');
+                return $this->redirectToRoute('homepage');
             }
         }
 
-        return $this->render("pages/recipe/recipe.html.twig");
+        return $this->render("default/home.html.twig");
     }
 
     public function editRecipe($id){

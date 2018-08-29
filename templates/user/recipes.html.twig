@@ -1,12 +1,13 @@
 {% block content %}
     {% if not recipes %}
-        <p>Vous n'avez pas encore de recettes, ajoutez-en! <span class="add">+</span></p>
-
+        <p class="bg message">Vous n'avez pas encore de recettes, ajoutez-en! <span class="add">+</span></p>
     {% else  %}
         <p>Ajouter une recette <span class="add">+</span></p>
     {% endif %}
 
+
     {{ include('pages/recipe/addRecipe.html.twig') }}
+
 
     {% for recipe in recipes %}
         <p>{{ recipe.name }}</p>

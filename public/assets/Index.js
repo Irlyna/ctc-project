@@ -11,7 +11,6 @@ $(document).ready(function () {
         let contentP = $(this).text();
         $(this).replaceWith(replaceByInput(this));
         $('.' + this.className + '').val(contentP);
-
     })
 
     function replaceByInput($item){
@@ -29,10 +28,9 @@ $(document).ready(function () {
         $(".form").slideToggle();
     });
 
-    //ADD STEP IN FORM RECIPE
-    //Don't work
-    $(".addStep").click(function(){
-        $('.addStep').attr('id', 'step');
-        $('.step').clone().insertAfter('.step')
-    });
+    //DISPLAY INGREDIENT CATEGORIES
+    $(".categoriesList").hide();
+    $(".display-more").click(function (){
+        $(this).next(".categoriesList").slideToggle();
+    } )
 });

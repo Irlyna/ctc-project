@@ -41,16 +41,8 @@ class AdminController extends Controller {
 
     /**
      * @param $userId
-     * @Route("/edit-user/{userId}", name="admin.edit.user")
-     */
-    public function editUser($userId){
-
-    }
-
-    /**
-     * @param $userId
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @Route("/delete-user/{userId}", name="admin.delete.user")
+     * @Route("/admin/delete-user/{userId}", name="admin.delete.user")
      */
     public function deleteUser($userId){
         $em = $this->getDoctrine()->getManager();
@@ -62,6 +54,6 @@ class AdminController extends Controller {
         }
         $em->getRepository(User::class)->deleteUser($userId);
         $em->flush();
-        return $this->redirectToRoute('admin.index');
+        return $this->redirectToRoute('homepage');
     }
 }

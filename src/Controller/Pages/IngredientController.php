@@ -78,16 +78,15 @@ class IngredientController extends Controller {
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function editIngredient($ingredientId){
-        if(isset($_POST['submit'])){
-            $em = $this->getDoctrine()->getManager();
-            $ingredient = $em->find(Ingredient::class, $ingredientId);
-
+        $em = $this->getDoctrine()->getManager();
+        $ingredient = $em->find(Ingredient::class, $ingredientId);
+        //MODIFY INGREDIENT OR INGREDIENT CATEGORIES
+        if(isset($_POST['modify'])){
             if(isset($_POST['category'])){
                 $ingredientCategoryUpdate = $_POST['category'];
 
                 $getIngredientCategory = $em->getRepository(IngredientCategory::class)->findBy([
-                    'name' => $ingredientCategoryUpdate]
-                );
+                    'name' => $ingredientCategoryUpdate]);
 
                 if(empty($getIngredientCategory) ){
                     $category = new IngredientCategory();
@@ -102,6 +101,7 @@ class IngredientController extends Controller {
                     }
 
                     $catIng = $ingredient->getIngredientCategories();
+
                     foreach ($catIng as $key) {
                         $categoryOfIngredient = $key;
                     }
@@ -118,22 +118,17 @@ class IngredientController extends Controller {
                 $ingredientUpdate = $_POST['name'];
                 $em->getRepository(Ingredient::class)->editIngredient($ingredientId, $ingredientUpdate);
             }
-            $em->flush();
+        //DELETE AN INGREDIENT AND ITS CATEGORY
+        }elseif (isset($_POST['delete'])){
+            $ingredient->getIngredientCategories();
+
+            foreach ($ingredient as $categories){
+                $ingredient->removeIngredientCategory($categories);
+            }
+            $em->getRepository(Ingredient::class)->deleteIngredient($ingredientId);
         }
-        return $this->redirectToRoute('admin.index');
-    }
-
-    /**
-     * @param $ingredientId
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     * @Route("/supprimer-ingredients/{ingredientId}", name="ingredient.delete")
-     */
-    public function deleteIngredient($ingredientId){
-        $em = $this->getDoctrine()->getManager();
-        $ingredients = $em->find(Ingredient::class, $ingredientId);
-
-        $em->getRepository(Ingredient::class)->deleteIngredient($ingredientId);
         $em->flush();
         return $this->redirectToRoute('admin.index');
     }
+
 }

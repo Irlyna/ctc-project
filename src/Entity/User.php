@@ -46,6 +46,7 @@ class User implements UserInterface, \Serializable {
      */
     private $password;
 
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="user")
      *
@@ -87,11 +88,13 @@ class User implements UserInterface, \Serializable {
     public function removeRecipe(Recipe $recipe){
         $this->recipes->removeElement($recipe);
     }
+
+
     //*****************************
     //      GETTER - SETTER
     //*****************************
 
-    public function getId(){
+    public function getId() {
         return $this->id;
     }
 

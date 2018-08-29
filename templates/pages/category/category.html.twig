@@ -9,13 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <p>Ajouter une categorie <span class="add">+</span></p>
-    <section class="form">
-        <div class="bg">
-            <h3>Ajouter une catégorie</h3>
-            {{ form_start(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
-        </div>
-    </section>
+    <div class="display">
+            <p class="bg message">Désolée, aucunes catégories enregistrées à afficher pour le moment</p>
+    </div>
 {% endblock %}

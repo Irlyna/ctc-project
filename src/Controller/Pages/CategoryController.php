@@ -22,10 +22,19 @@ class CategoryController extends Controller {
 
     /**
      * @Route("/", name="category.index")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexAction(){
+
+        return $this->render("pages/category/category.html.twig");
+    }
+
+    /**
+     * @Route("/admin/ajouter-categorie-recette", name="category.add")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request){
+    public function addRecipeCategory(Request $request){
         $category = new RecipeCategory();
 
         $form = $this->createForm(CategoryFormType::class, $category);

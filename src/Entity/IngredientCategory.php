@@ -24,7 +24,7 @@ class IngredientCategory{
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", mappedBy="ingredientCategories", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", mappedBy="ingredientCategories")
      */
     private $ingredients = [];
 

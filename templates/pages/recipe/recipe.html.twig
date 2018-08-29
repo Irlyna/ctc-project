@@ -1,17 +1,4 @@
-{% extends 'default/layout.html.twig' %}
 
-{% block head %}
-    {{ parent() }}
-    <title> - Recettes</title>
-{% endblock %}
-
-{% block nav %}
-    {{ include('default/index.html.twig') }}
-{% endblock %}
-
-{% block content %}
     <p>Ajouter une recette <span class="add">+</span></p>
 
     {{ include('pages/recipe/addRecipe.html.twig') }}
-
-{% endblock %}

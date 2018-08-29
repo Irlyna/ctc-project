@@ -25,7 +25,8 @@
                             <h3><a href="{{ path('connection.index') }}"><i class="fas fa-sign-in-alt"></i> connexion</a></h3>
                         {% else %}
                             {% if app.user.roles == ["ROLE_ADMIN"] %}
-                                <h3><a href="{{ path('admin.index') }}"><i class="fas fa-user"></i> Profil admin</a></h3>
+                                <h3><a href="{{ path('admin.index') }}"><i class="fas fa-user"></i> Administation</a></h3>
+                                <h3><a href="{{ path('user.index') }}"><i class="fas fa-user"></i> Profil</a></h3>
                             {% else %}
                                 <h3><a href="{{ path('user.index') }}"><i class="fas fa-user"></i> Profil</a></h3>
                             {% endif %}
@@ -40,7 +41,7 @@
                         <ul>
                             <li><a href="{{ path('homepage') }}">Accueil</a></li>
                             <li><a href="{{ path('category.index') }}">Catégories</a></li>
-                            <li><a href="{{ path('recipe.index') }}">Recettes</a></li>
+                            <!--<li><a href="{{ path('recipe.index') }}">Recettes</a></li>-->
                             <li><a href="{{ path('ingredient.index') }}">Ingrédients</a></li>
                         </ul>
                     </nav>

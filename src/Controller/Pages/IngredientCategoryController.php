@@ -45,29 +45,19 @@ class IngredientCategoryController extends Controller {
      * @Route("/editer-categorie-ingredient/{ingredientCategoryId}", name="ing.cat.edit")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function editIngredient($ingredientCategoryId){
-        if(isset($_POST['submit']) && !empty($_POST)){
-            $em = $this->getDoctrine()->getManager();
-            $IngredientCategoryUpdate = $_POST['name'];
+    public function editIngredientCategory($ingredientCategoryId){
+        $em = $this->getDoctrine()->getManager();
+        $em->find(IngredientCategory::class, $ingredientCategoryId);
 
-            $em->find(IngredientCategory::class, $ingredientCategoryId);
+        if(isset($_POST['modify']) && !empty($_POST)){
+            $IngredientCategoryUpdate = $_POST['name'];
 
             $em->getRepository(IngredientCategory::class)->editIngredientCategory($ingredientCategoryId, $IngredientCategoryUpdate);
 
             $em->flush();
+        }elseif (isset($_POST['delete'])){
+            $em->getRepository(IngredientCategory::class)->deleteIngredientCategory($ingredientCategoryId);
         }
-        return $this->redirectToRoute('admin.index');
-    }
-
-    /**
-     * @param $ingredientCategoryId
-     * @Route("/supprime-categorie-ingredient/{ingredientCategoryId}", name="ing.cat.delete")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function deleteIngredientCategory($ingredientCategoryId){
-        $em = $this->getDoctrine()->getManager();
-        $em->find(IngredientCategory::class, $ingredientCategoryId);
-        $em->getRepository(IngredientCategory::class)->deleteIngredientCategory($ingredientCategoryId);
         $em->flush();
         return $this->redirectToRoute('admin.index');
     }

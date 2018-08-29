@@ -10,31 +10,16 @@
 {% endblock %}
 
 {% block content %}
-    <p>Vous ne trouvez pas l'ingrédient? Ajoutez le ! <span class="add addIngredient">+</span></p>
+    <div class="display">
+        {% if not ingredients %}
+            <p class="bg message">Désolée, aucuns ingrédient enregistrées à afficher pour le moment</p>
+        {% else %}
+            <section class="bg list">
 
-    <section class="form">
-        <div class="bg">
-            <h3>Ajouter un ingrédients</h3>
-
-            <form action="{{ path('ingredient.addIngredient') }}" method="post">
-
-                <div class="center">
-                    <label for="ingredient">Nom de l'ingrédient</label>
-                    <input placeholder="Ex: Fraise" type="text" name="ingredient">
-                </div>
-
-                <div class="center">
-                    <label for="ingredientCategory">Catégorie de l'ingredient</label>
-                    <input placeholder="Ex: Fruit" type="text" name="ingredientCategory">
-                </div>
-                <button type="submit" name="submit">Envoyer</button>
-            </form>
-        </div>
-    </section>
-
-    <section>
-        {%  for ingredient in ingredients %}
-            <p>{{ ingredient }}</p>
-        {% endfor %}
-    </section>
+                    {%  for ingredient in ingredients %}
+                        <p>{{ ingredient }}</p>
+                    {% endfor %}
+            </section>
+        {% endif %}
+    </div>
 {% endblock %}

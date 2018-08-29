@@ -21,8 +21,18 @@ h3{
     border-radius: 5px;
     margin: 20px;
     padding: 10px 10px 60px 10px;
-    width: 45%;
+    width: 100%;
     position: relative;
+}
+
+.message{
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.addInput{
+    cursor: pointer;
 }
 
 /* BODY */
@@ -146,7 +156,13 @@ nav ul li a:hover{
 
 .ordreAlpha ul li a:hover{
     background: #0f6961;
-    box-shadow:  0 0 10px #0f6961;}
+    box-shadow:  0 0 10px #0f6961;
+}
+
+.list{
+    padding: 10px;
+    width: 100%;
+}
 
 /* HOMEPAGE */
 .display{
@@ -157,15 +173,19 @@ nav ul li a:hover{
 }
 
 .display-recipe{
+    border: 1px solid #d8dbda;
     width: 100%;
-    padding : 0;
+    padding : 5px;
     position: inherit;
     list-style-type: none;
 }
 
-.display-recipe h2{
-    display: flex;
-    justify-content: space-between;
+.category{
+    color: white;
+    padding: 2px 4px;
+    background: #737373;
+    border: 1px solid #737373;
+    border-radius: 10px;
 }
 
 /* FORMULAIRES */
@@ -215,7 +235,13 @@ nav ul li a:hover{
     color: white;
 }
 
-.add, .read-more, .more{
+.display-ingredient{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 50px 5px 0px;
+}
+
+.add, .read-more, .more, .addStep{
     color: white;
     cursor: pointer;
     background: #d8dbda;
@@ -226,15 +252,8 @@ nav ul li a:hover{
 .add:hover, .read-more:hover{
     background: grey;
 }
-.addStep{
-    color: white;
-    cursor: pointer;
-    background: grey;
-    padding: 3px 5px;
-    border-radius: 5px;
-}
 
-/* TABLES */
+/* ADMIN DATA */
 .displayData{
     margin: 0 auto;
     padding: 0;
@@ -252,17 +271,16 @@ nav ul li a:hover{
     border-bottom: 2px solid #D8DBDA;
 }
 
-.head{
-    display: flex;
-    justify-content: space-around;
+.head h4:first-child, .head h4:last-child{
+  margin: auto 10px;
 }
 
-.dataContent{
+.head, .dataContent{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.dataContent p{
+.dataContent p, .ingredientCategories{
      margin-left: 10px;
      flex: 1;
 }
@@ -271,11 +289,17 @@ nav ul li a:hover{
     margin: 10px;
 }
 
+.dataContent button{
+    margin: 5px;
+    position: inherit;
+}
+
+.ingredientCategories{
+    flex-direction: column;
+}
+
 .action{
     margin: auto 10px;
 }
 
-.action button{
-    margin: 5px;
-    position: inherit;
-}
+

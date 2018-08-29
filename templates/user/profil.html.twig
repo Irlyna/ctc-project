@@ -6,10 +6,16 @@
 
 
 {% block content %}
+    <div class="display">
+        <p>Votre profil</p>
 
-    Votre profil
+        <p>
+            <a href="{{ path('user.delete', {'userId' : app.user.id}) }}">
+                Supprimer mon compte
+            </a>
+        </p>
 
-    {{ include('user/recipes.html.twig') }}
-
+        {{ include('user/recipes.html.twig') }}
+    </div>
 
 {% endblock %}
