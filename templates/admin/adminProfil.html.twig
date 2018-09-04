@@ -1,34 +1,36 @@
-{% extends 'default/home.html.twig' %}
+{% extends 'default/layout.html.twig' %}
 
 {% block content %}
-    <h3>Votre profil admin</h3>
-    <p>Bienvenue {{ app.user.name }}</p>
+    <div class="display">
+        <h3>Votre profil admin</h3>
+        <p>Bienvenue {{ app.user.name }}</p>
 
-    <div class="affiche">
-        <h3>Gérer les utilisateurs <!--<span class="more">+</span> --></h3>
-        <div class="displayTable">
-            {{ include('admin/userManagement.html.twig') }}
+        <div class="affiche">
+            <h3>Gérer les utilisateurs <!--<span class="more">+</span> --></h3>
+            <div class="displayTable">
+                {{ include('admin/userManagement.html.twig') }}
+            </div>
         </div>
-    </div>
 
-    <div class="affiche">
-        <h3>Gérer les categories de recettes <!--<span class="more">+</span> --></h3>
-        <div class="displayTable">
-            {{ include('admin/recipeCategoryManagement.html.twig') }}
+        <div class="affiche">
+            <h3>Gérer les categories de recettes <!--<span class="more">+</span> --></h3>
+            <div class="displayTable">
+                {{ include('admin/recipeCategoryManagement.html.twig') }}
+            </div>
         </div>
-    </div>
 
-    <div class="affiche">
-        <h3>Gérer les ingrédients <!--<span class="more">+</span> --></h3>
-        <div class="displayTable">
-            {{ include('admin/ingredientsManagement.html.twig') }}
+        <div class="affiche">
+            <h3>Gérer les ingrédients <!--<span class="more">+</span> --></h3>
+            <div class="displayTable">
+                {{ include('admin/ingredientsManagement.html.twig') }}
+            </div>
         </div>
-    </div>
 
-    <div class="affiche">
-        <h3>Gérer les catégories d'ingredients <!--<span class="more">+</span> --></h3>
-        <div class="displayTable">
-            {{ include('admin/ingredientCategoriesManagement.html.twig') }}
+        <div class="affiche">
+            <h3>Gérer les catégories d'ingredients <!--<span class="more">+</span> --></h3>
+            <div class="displayTable">
+                {{ include('admin/ingredientCategoriesManagement.html.twig') }}
+            </div>
         </div>
     </div>
 {% endblock %}

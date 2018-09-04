@@ -10,6 +10,15 @@
 
 {% block content %}
     <div class="display">
+        {% if not categories %}
             <p class="bg message">Désolée, aucunes catégories enregistrées à afficher pour le moment</p>
+        {% else %}
+            <section class="bg list">
+
+                {%  for category in categories %}
+                    <p>{{ category }}</p>
+                {% endfor %}
+            </section>
+        {% endif %}
     </div>
 {% endblock %}

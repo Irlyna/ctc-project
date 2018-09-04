@@ -25,8 +25,13 @@ class CategoryController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(){
+        $getCategories = $this->getDoctrine()->getRepository(RecipeCategory::class)->findAll();
 
-        return $this->render("pages/category/category.html.twig");
+        $categories = [];
+        foreach ($getCategories as $category => $name){
+            $categories[] = $name->getName();
+        }
+        return $this->render("pages/category/category.html.twig", ['categories' => $categories]);
     }
 
     /**

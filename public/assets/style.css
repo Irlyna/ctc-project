@@ -262,6 +262,10 @@ nav ul li a:hover{
 }
 
 /* ADMIN DATA */
+.affiche{
+    margin-bottom: 20px;
+}
+
 .displayData{
     margin: 0 auto;
     padding: 0;

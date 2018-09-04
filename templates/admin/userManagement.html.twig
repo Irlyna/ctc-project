@@ -7,7 +7,6 @@
             <h4>Prénom</h4>
             <h4>Nom</h4>
             <h4>E-mail</h4>
-            <h4>Roles</h4>
             <h4>Action</h4>
         </div>
         {% for user in users%}
@@ -17,15 +16,7 @@
                 <p>{{ user.name }}</p>
                 <p>{{ user.firstname }}</p>
                 <p>{{ user.email }}</p>
-                {% for role in user.roles %}
-                    <p>{{ role }}</p>
-                {% endfor %}
                 <div class="action" align="center">
-                    <button type="button">
-                        <a href="{{ path('user.edit', {'userId' : user.id}) }}">
-                            <i class="fas fa-user-edit"></i>
-                        </a>
-                    </button>
                     <button>
                         <a href="{{ path('admin.delete.user', {'userId' : user.id}) }}">
                             <i class="far fa-trash-alt"></i>
