@@ -32,5 +32,5 @@ $(document).ready(function () {
     $(".categoriesList").hide();
     $(".display-more").click(function (){
         $(this).next(".categoriesList").slideToggle();
-    } )
+    } );
 });

@@ -6,6 +6,7 @@ html{
 
 a{
     text-decoration: none;
+    color:white;
 }
 
 h2{
@@ -225,7 +226,6 @@ nav ul li a:hover{
 }
 
 .bg button{
-    position: absolute;
     bottom: 20px;
     right: 20px;
     padding: 5px;
@@ -233,6 +233,10 @@ nav ul li a:hover{
     border: none;
     border-radius: 3px;
     color: white;
+}
+
+.send{
+    position: absolute;
 }
 
 .display-ingredient{
@@ -251,6 +255,10 @@ nav ul li a:hover{
 
 .add:hover, .read-more:hover{
     background: grey;
+}
+
+.linkToConnection{
+    color: black;
 }
 
 /* ADMIN DATA */
@@ -302,4 +310,35 @@ nav ul li a:hover{
     margin: auto 10px;
 }
 
+/* USER DATA */
+.delete-account{
+    background: red;
+    border: 2px solid red;
+    border-radius: 3px;
+}
 
+.delete-account a{
+    color: white;
+}
+
+.recipe-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.display-button{
+    align-self: center;
+}
+
+.display-button button{
+    position: inherit;
+}
+
+.content{
+    margin: 20px auto;
+}
+
+/* EDIT RECIPE */
+.contentEdit{
+    height: 60px;
+}

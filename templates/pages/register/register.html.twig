@@ -6,46 +6,47 @@
 
 {% block content %}
 
+    <div class="display">
+        <section class="form">
+            <div class="bg">
+                <h3>S'inscrire</h3>
 
-    <section class="form">
-        <div class="bg">
-            <h3>S'inscrire</h3>
+                <form action="{{ path('connection.register') }}" method="post" name="form">
+                    <div class="center">
+                        <label for="username">Votre pseudo</label>
+                        <input type="text" name="username">
+                    </div>
 
-            <form action="{{ path('connection.register') }}" method="post" name="form">
-                <div class="center">
-                    <label for="username">Votre pseudo</label>
-                    <input type="text" name="username">
-                </div>
+                    <div class="center">
+                        <label for="name">Votre prénom</label>
+                        <input type="text" name="name">
+                    </div>
 
-                <div class="center">
-                    <label for="name">Votre prénom</label>
-                    <input type="text" name="name">
-                </div>
+                    <div class="center">
+                        <label for="firtname">Votre nom</label>
+                        <input type="text" name="firstname">
+                    </div>
 
-                <div class="center">
-                    <label for="firtname">Votre nom</label>
-                    <input type="text" name="firstname">
-                </div>
+                    <div class="center">
+                        <label for="email">Votre e-mail</label>
+                        <input type="email" name="email">
+                    </div>
 
-                <div class="center">
-                    <label for="email">Votre e-mail</label>
-                    <input type="email" name="email">
-                </div>
+                    <div class="center">
+                        <label for="password">Choisissez un mot de passe</label>
+                        <input type="password" name="password-first">
+                    </div>
 
-                <div class="center">
-                    <label for="password">Choisissez un mot de passe</label>
-                    <input type="password" name="password-first">
-                </div>
+                    <div class="center">
+                        <label for="password-second">Confirmer votre mot de passe</label>
+                        <input type="password" name="password-second">
+                    </div>
 
-                <div class="center">
-                    <label for="password-second">Confirmer votre mot de passe</label>
-                    <input type="password" name="password-second">
-                </div>
-
-                <button type="submit" name="submit">Confirmer</button>
-            </form>
-            <p>Déjà un compte ? <a href="{{ path('connection.index') }}">Connectez-vous</a></p>
-        </div>
-    </section>
+                    <button type="submit" name="submit" class="send">Confirmer</button>
+                </form>
+                <p>Déjà un compte ? <a href="{{ path('connection.index') }}" class="linkToConnection">Connectez-vous</a></p>
+            </div>
+        </section>
+    </div>
 
 {% endblock %}

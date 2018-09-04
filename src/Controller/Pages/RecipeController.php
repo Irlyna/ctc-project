@@ -47,8 +47,9 @@ class RecipeController extends Controller {
             $getRecipe = $em->getRepository(Recipe::class)->findOneBy(['name' => $name]);
 
             if(empty($getRecipe)){
+                //ADD INGREDIENT
                 foreach($ingredients as $ingredient){
-                    $getIngredients = $em->getRepository(Ingredient::class)->findOneBy(['name' => $ingredient]);
+                    $getIngredients = $this->getIngredient($em, $ingredient);
                     if(!empty($getIngredients)){
                         $nameIngredient= strtolower($getIngredients->getName());
 
@@ -68,9 +69,9 @@ class RecipeController extends Controller {
                     }
 
                 }
-
+                //ADD RECIPE CATEGORY
                 foreach ($recipeCategories as $category){
-                    $getRecipeCat = $em->getRepository(RecipeCategory::class)->findOneBy(['name' => $category]);
+                    $getRecipeCat = $this->getRecipeCategory($em, $category);
                     if(!empty($getRecipeCat)){
                         $nameRecipe= strtolower($getRecipeCat->getName());
                         if(strtolower($category) != $nameRecipe){
@@ -106,11 +107,111 @@ class RecipeController extends Controller {
         return $this->render("default/home.html.twig");
     }
 
-    public function editRecipe($id){
 
+    /**
+     * @param $recipeId
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/modifier-recette/{recipeId}", name="recipe.edit")
+     */
+    public function editRecipe($recipeId){
+        $em = $this->getDoctrine()->getManager();
+        $recipe = $em->getRepository(Recipe::class)->find($recipeId);
+
+        if(isset($_POST['submit'])){
+            $recipeName = $_POST['name'];
+            $recipeIngredients = $_POST['ingredient'];
+            $addRecipeIngredient = explode(',',$_POST['addIngredient']);
+            $recipeContent = $_POST['step'];
+            $recipeCategories = $_POST['recipeCategory'];
+            $addRecipeCategory = explode(',',strtolower($_POST['addRecipeCategory']));
+
+            $recipe->setName($recipeName);
+            $recipe->setContent($recipeContent);
+
+            /*foreach ($recipeIngredients as $ingredient){
+                $getIngredient = $this->getIngredient($em, $ingredient);
+                foreach ($getIngredient as $item) {
+                    if($ingredient != $item->getName()){
+                        $recipe->addIngredients($item);
+                    }
+                }
+            }*/
+
+            foreach($addRecipeIngredient as $ingredient){
+                if(!empty($ingredient)){
+                    $getIngredient = $this->getIngredient($em, $ingredient);
+                    if(empty($getIngredient)){
+                        $newIngredient = new Ingredient();
+                        $newIngredient->setName($ingredient);
+                        $recipe->addIngredients($newIngredient);
+                        $em->persist($newIngredient);
+                    }else{
+                        $recipe->addIngredients($ingredient);
+                    }
+                }
+            }
+
+            /*foreach ($recipeCategories as $category){
+                $getCategory = $this->getRecipeCategory($em, $category);
+                foreach ($getCategory as $item){
+                    if($category != $item->getName()){
+                        $recipe->addRecipeCategory($item);
+                    }
+                }
+            }*/
+
+            foreach($addRecipeCategory as $category){
+                if(!empty($category)){
+                    $getCategory = $this->getRecipeCategory($em, $category);
+                    if(empty($getCategory)){
+                        $newCategory = new RecipeCategory();
+                        $newCategory->setName($category);
+                        $recipe->addRecipeCategory($newCategory);
+                        $em->persist($newCategory);
+                    }else{
+                        $recipe->addRecipeCategory($category);
+                    }
+                }
+            }
+
+
+            $em->flush();
+        }else{
+            return $this->render('pages/recipe/editRecipe.html.twig', ['recipe' => $recipe]);
+        }
+        return $this->redirectToRoute('user.index');
     }
 
-    public function deleteRecipe($RecipeId){
+    /**
+     * @param $recipeId
+     * @Route("/supprimer-recette/{recipeId}", name="recipe.delete")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteRecipe($recipeId){
+        $em = $this->getDoctrine()->getManager();
+        $recipe = $em->find(Recipe::class, $recipeId);
 
+        $ingredients = $recipe->getIngredients();
+        $categories = $recipe->getRecipeCategories();
+
+        foreach ($ingredients as $ingredient){
+            $recipe->removeIngredients($ingredient);
+        }
+        foreach ($categories as $category){
+            $recipe->removeRecipeCategory($category);
+        }
+
+        $em->getRepository(Recipe::class)->deleteRecipe($recipeId);
+
+        return $this->redirectToRoute('user.index');
+    }
+
+    private function getIngredient($em, $ingredient){
+        return $em->getRepository(Ingredient::class)->findBy(['name' => $ingredient]);
+    }
+
+    private function getRecipeCategory($em, $recipeCategory){
+        return $em->getRepository(RecipeCategory::class)->findBy(['name'=> $recipeCategory]);
     }
 }
+

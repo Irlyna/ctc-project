@@ -9,11 +9,11 @@
     <div class="display">
         <p>Votre profil</p>
 
-        <p>
+        <button class="delete-account">
             <a href="{{ path('user.delete', {'userId' : app.user.id}) }}">
                 Supprimer mon compte
             </a>
-        </p>
+        </button>
 
         {{ include('user/recipes.html.twig') }}
     </div>

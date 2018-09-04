@@ -14,6 +14,6 @@ class DefaultController extends Controller {
     public function homepageAction(){
         $recipes = $this->getDoctrine()->getRepository(Recipe::class)->findAll();
 
-        return $this->render("default/home.html.twig", ['recipes' => $recipes]);
+        return $this->render("default/home.html.twig",['recipes' => $recipes]);
     }
 }

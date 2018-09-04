@@ -1,0 +1,44 @@
+{% extends 'default/layout.html.twig' %}
+
+{% block content %}
+    <div class="display">
+        <section class="form">
+            <div class="bg">
+                <h3>Modifier une recette</h3>
+                    <form action="{{ path('recipe.edit', {'recipeId' : recipe.id}) }}" method="post" id="editRecipe">
+
+                        <h4>Titre de la recette</h4>
+                        <div class="center">
+                            <input value="{{ recipe.name }}" type="text" name="name">
+                        </div>
+
+                        <h4>Ingrédients</h4>
+                        {% for ingredient in recipe.ingredients %}
+                        <div class="center">
+                            <input value="{{ ingredient.name }}" type="text" name="ingredient">
+                        </div>
+                        {% endfor %}
+                        <div class="center">
+                            <input placeholder="Ajouter des ingredients (séparez par des virgules)" type="text" name="addIngredient">
+                        </div>
+
+                        <h4>Préparation</h4>
+                        <div class="center step">
+                            <textarea name="step" class="contentEdit">{{ recipe.content }}</textarea>
+                        </div>
+
+                        <h4>Catégories de la recette</h4>
+                        {% for category in recipe.recipeCategories %}
+                            <div class="center">
+                                <input value="{{ category.name }}" type="text" name="recipeCategory">
+                            </div>
+                        {% endfor %}
+                        <div class="center">
+                            <input placeholder="Ajouter des catégories à la recette (séparez par des virgules)" type="text" name="addRecipeCategory">
+                        </div>
+                        <button type="submit" name="submit" class="send">Envoyer</button>
+                    </form>
+            </div>
+        </section>
+    </div>
+{% endblock %}
