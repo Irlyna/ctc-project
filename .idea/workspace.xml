@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83d90bd8-04fa-4247-8fb3-e3353f8cc250" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/Pages/RecipeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Pages/RecipeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,16 +33,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecipeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecipeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Pages/RecipeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
+            <state relative-caret-position="41">
               <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
-              <folding>
-                <element signature="e#547#578#1#PHP" expanded="true" />
-                <element signature="e#3868#3892#1#PHP" expanded="true" />
-                <element signature="e#6704#6739#0#PHP" expanded="true" />
-              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ingredientsManagement.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -127,7 +132,6 @@
         <option value="$PROJECT_DIR$/templates/pages/category/category.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/templates/admin/ingredientCategoriesManagement.html.twig" />
-        <option value="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin/recipeCategoryManagement.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin/userManagement.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/profil.html.twig" />
@@ -142,6 +146,7 @@
         <option value="$PROJECT_DIR$/templates/pages/recipe/editRecipe.html.twig" />
         <option value="$PROJECT_DIR$/templates/user/recipes.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/Pages/RecipeController.php" />
+        <option value="$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig" />
       </list>
     </option>
   </component>
@@ -327,13 +332,6 @@
               <item name="ctc-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="ctc-project" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="pages" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="recipe" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="ctc-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ctc-project" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="user" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -437,7 +435,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376052000" />
+    <option name="totallyTimeSpent" value="376705000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -678,13 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="36" column="60" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/adminProfil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
@@ -839,13 +830,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Pages/RecipeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="41">
           <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
-          <folding>
-            <element signature="e#547#578#1#PHP" expanded="true" />
-            <element signature="e#3868#3892#1#PHP" expanded="true" />
-            <element signature="e#6704#6739#0#PHP" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/ingredientsManagement.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
         </state>
       </provider>
     </entry>

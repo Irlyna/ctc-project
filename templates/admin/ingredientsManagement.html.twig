@@ -16,7 +16,9 @@
                     <p class="editInput" title="name">{{ ingredient.name }}</p>
 
                     <div class="ingredientCategories">
-                        {% if ingredient.ingredientCategories %}
+                        {% if ingredient.ingredientCategories is empty %}
+                            <p class="editInput" title="category">Ajouter une catégorie</p>
+                        {% else %}
                             <p class="display-more">Afficher plus</p>
                             <div class="categoriesList">
                                 <ul>
@@ -25,8 +27,9 @@
                                 {% endfor %}
                                 </ul>
                             </div>
+                            <p class="editInput" title="category">Ajouter une catégorie</p>
                         {% endif %}
-                        <p class="editInput" title="category">Ajouter une catégorie</p>
+
                     </div>
 
                     <div class="action" align="center">
