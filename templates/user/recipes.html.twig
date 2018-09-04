@@ -14,7 +14,6 @@
             <div class="recipe-title">
                 <h2 class="contentH2">{{ recipe.name }}</h2>
                 <div class="display-button">
-                    <button><a href="{{ path('recipe.edit', {'recipeId' : recipe.id}) }}"><i class="fas fa-pen"></i></a></button>
                     <button><a href="{{ path('recipe.delete', {'recipeId' : recipe.id}) }}"><i class="far fa-trash-alt"></i></a></button>
                 </div>
             </div>
