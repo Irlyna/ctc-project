@@ -51,15 +51,19 @@ class RecipeController extends Controller {
                 foreach($ingredients as $ingredient){
                     $getIngredients = $this->getIngredient($em, $ingredient);
                     if(!empty($getIngredients)){
-                        $nameIngredient= strtolower($getIngredients->getName());
+                        foreach($getIngredients as $ing){
+                            $nameIngredient= strtolower($ing->getName());
+                        }
 
+                        dump($getIngredients);
                         if(strtolower($ingredient) != $nameIngredient){
                             $newIngredient = new Ingredient();
                             $newIngredient->setName($ingredient);
                             $recipe->addIngredients($newIngredient);
                             $em->persist($newIngredient);
                         }else{
-                            $recipe->addIngredients($getIngredients);
+                            foreach ($getIngredients as $ing)
+                            $recipe->addIngredients($ing);
                         }
                     }elseif(empty($getIngredients)){
                         $newIngredient = new Ingredient();
@@ -73,14 +77,19 @@ class RecipeController extends Controller {
                 foreach ($recipeCategories as $category){
                     $getRecipeCat = $this->getRecipeCategory($em, $category);
                     if(!empty($getRecipeCat)){
-                        $nameRecipe= strtolower($getRecipeCat->getName());
+                        foreach ($getRecipeCat as $cat){
+                            $nameRecipe= strtolower($cat->getName());
+                        }
                         if(strtolower($category) != $nameRecipe){
                             $recipeCategory = new RecipeCategory();
                             $recipeCategory->setName($category);
                             $recipe->addRecipeCategory($recipeCategory);
                             $em->persist($recipeCategory);
                         }else{
-                            $recipe->addRecipeCategory($getRecipeCat);
+                            foreach($getRecipeCat as $cat){
+                                $recipe->addRecipeCategory($cat);
+                            }
+
                         }
                     }elseif(empty($getRecipeCat)){
                         $recipeCategory = new RecipeCategory();
