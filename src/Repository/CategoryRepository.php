@@ -41,4 +41,16 @@ class CategoryRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getCategoriesByLetter($letter){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->select('rc')
+            ->from('App:RecipeCategory', 'rc')
+            ->where('rc.name LIKE :letter')
+            ->setParameter('letter', $letter.'%');
+
+        return $qb->getQuery()->getResult();
+    }
 }

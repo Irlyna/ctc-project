@@ -29,6 +29,18 @@ class RecipeController extends Controller {
     }
 
     /**
+     * @param $letter
+     * @Route("/trier-par-lettre/{letter}", name="recipe.by.letter")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getRecipesByLetter($letter){
+        $em = $this->getDoctrine()->getManager();
+        $recipes = $em->getRepository(Recipe::class)->getRecipeByLetter($letter);
+
+        return $this->render('default/home.html.twig', ['recipes' => $recipes]);
+    }
+
+    /**
      * @Route("/ajouter-une-recette", name="recipe.add")
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -40,7 +52,7 @@ class RecipeController extends Controller {
             $name = $_POST['name'];
             $ingredients = explode(',',$_POST['ingredient']);
             $step = $_POST['step'];
-            $recipeCategories = explode(',',strtolower($_POST['recipeCategory']));
+            $recipeCategories = explode(',',$_POST['recipeCategory']);
 
 
             $em = $this->getDoctrine()->getManager();
@@ -55,7 +67,6 @@ class RecipeController extends Controller {
                             $nameIngredient= strtolower($ing->getName());
                         }
 
-                        dump($getIngredients);
                         if(strtolower($ingredient) != $nameIngredient){
                             $newIngredient = new Ingredient();
                             $newIngredient->setName($ingredient);

@@ -39,6 +39,17 @@ class RecipeRepository extends ServiceEntityRepository
             ->where('r.id = :recipeId')
             ->setParameter('recipeId', $recipeId);
 
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getRecipeByLetter($letter){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->select('r')
+            ->from('App:Recipe', 'r')
+            ->where('r.name LIKE :letter')
+            ->setParameter('letter', $letter.'%');
 
         return $qb->getQuery()->getResult();
     }

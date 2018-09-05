@@ -5,7 +5,39 @@
 {% endblock %}
 
 {% block nav %}
-    {{ include('default/index.html.twig') }}
+    <div class="content">
+        <nav class="ordreAlpha">
+            <ul>
+                <li><a href="{{ path('category.index')}}" >Tout</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'A' }) }}>A</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'B' }) }}>B</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'C' }) }}>C</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'D' }) }}>D</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'E' }) }}>E</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'F' }) }}>F</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'G' }) }}>G</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'H' }) }}>H</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'I' }) }}>I</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'J' }) }}>J</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'K' }) }}>K</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'L' }) }}>L</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'M' }) }}>M</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'N' }) }}>N</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'O' }) }}>O</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'P' }) }}>P</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'Q' }) }}>Q</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'R' }) }}>R</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'S' }) }}>S</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'T' }) }}>T</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'U' }) }}>U</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'V' }) }}>V</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'W' }) }}>W</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'X' }) }}>X</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'Y' }) }}>Y</a></li>
+                <li><a href={{ path('category.by.letter', {'letter' : 'Z' }) }}>Z</a></li>
+            </ul>
+        </nav>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -14,9 +46,8 @@
             <p class="bg message">Désolée, aucunes catégories enregistrées à afficher pour le moment</p>
         {% else %}
             <section class="bg list">
-
                 {%  for category in categories %}
-                    <p>{{ category }}</p>
+                    <p>{{ category.name }}</p>
                 {% endfor %}
             </section>
         {% endif %}

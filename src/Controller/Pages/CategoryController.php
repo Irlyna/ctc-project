@@ -25,13 +25,21 @@ class CategoryController extends Controller {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(){
-        $getCategories = $this->getDoctrine()->getRepository(RecipeCategory::class)->findAll();
+        $categories = $this->getDoctrine()->getRepository(RecipeCategory::class)->findAll();
 
-        $categories = [];
-        foreach ($getCategories as $category => $name){
-            $categories[] = $name->getName();
-        }
         return $this->render("pages/category/category.html.twig", ['categories' => $categories]);
+    }
+
+    /**
+     * @param $letter
+     * @Route("/trier-par-lettre/{letter}", name="category.by.letter")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getCategoriesByLetter($letter){
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository(RecipeCategory::class)->getCategoriesByLetter($letter);
+
+        return $this->render('pages/category/category.html.twig', ['categories' => $categories]);
     }
 
     /**

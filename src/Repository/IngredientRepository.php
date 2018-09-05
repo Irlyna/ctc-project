@@ -51,4 +51,21 @@ class IngredientRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /*
+     * SELECT *
+     * FROM `recipe_category`
+     * WHERE recipe_category.name
+     * LIKE 'C%'*/
+    public function getIngredientsByLetter($letter){
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->select('i')
+            ->from('App:Ingredient', 'i')
+            ->where('i.name LIKE :letter')
+            ->setParameter('letter', $letter.'%');
+
+        return $qb->getQuery()->getResult();
+    }
 }

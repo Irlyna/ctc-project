@@ -22,13 +22,21 @@ class IngredientController extends Controller {
      * @Route("/", name="ingredient.index")
      */
     public function indexAction(){
-        $getIngredients = $this->getDoctrine()->getRepository(Ingredient::class)->findAll();
+        $ingredients = $this->getDoctrine()->getRepository(Ingredient::class)->findAll();
 
-        $ingredients = [];
-        foreach ($getIngredients as $ingredient => $name){
-            $ingredients[] = $name->getName();
-        }
         return $this->render("pages/ingredient/ingredient.html.twig", ['ingredients' => $ingredients]);
+    }
+
+    /**
+     * @param $letter
+     * @Route("/trier-par-lettre/{letter}", name="ingredient.by.letter")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getIngredientsByLetter($letter){
+        $em = $this->getDoctrine()->getManager();
+        $ingredients = $em->getRepository(Ingredient::class)->getIngredientsByLetter($letter);
+
+        return $this->render('pages/ingredient/ingredient.html.twig', ['ingredients' => $ingredients]);
     }
 
     /**
