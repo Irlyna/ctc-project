@@ -48,7 +48,6 @@ class IngredientRepository extends ServiceEntityRepository
             ->where('i.id = :ingredientId')
             ->setParameter('ingredientId', $ingredientId);
 
-
         return $qb->getQuery()->getResult();
     }
 
@@ -56,7 +55,8 @@ class IngredientRepository extends ServiceEntityRepository
      * SELECT *
      * FROM `recipe_category`
      * WHERE recipe_category.name
-     * LIKE 'C%'*/
+     * LIKE 'C%'
+     * */
     public function getIngredientsByLetter($letter){
         $em = $this->getEntityManager();
         $qb = $em->createQueryBuilder();

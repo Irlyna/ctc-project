@@ -58,25 +58,15 @@ class RecipeController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $getRecipe = $em->getRepository(Recipe::class)->findOneBy(['name' => $name]);
 
-            if(empty($getRecipe)){
+            if(empty($getRecipe)) {
                 //ADD INGREDIENT
-                foreach($ingredients as $ingredient){
+                foreach ($ingredients as $ingredient) {
                     $getIngredients = $this->getIngredient($em, $ingredient);
-                    if(!empty($getIngredients)){
-                        foreach($getIngredients as $ing){
-                            $nameIngredient= strtolower($ing->getName());
-                        }
-
-                        if(strtolower($ingredient) != $nameIngredient){
-                            $newIngredient = new Ingredient();
-                            $newIngredient->setName($ingredient);
-                            $recipe->addIngredients($newIngredient);
-                            $em->persist($newIngredient);
-                        }else{
-                            foreach ($getIngredients as $ing)
+                    if (!empty($getIngredients)) {
+                        foreach ($getIngredients as $ing) {
                             $recipe->addIngredients($ing);
                         }
-                    }elseif(empty($getIngredients)){
+                    } elseif (empty($getIngredients)) {
                         $newIngredient = new Ingredient();
                         $newIngredient->setName($ingredient);
                         $recipe->addIngredients($newIngredient);
@@ -85,24 +75,13 @@ class RecipeController extends Controller {
 
                 }
                 //ADD RECIPE CATEGORY
-                foreach ($recipeCategories as $category){
+                foreach ($recipeCategories as $category) {
                     $getRecipeCat = $this->getRecipeCategory($em, $category);
-                    if(!empty($getRecipeCat)){
-                        foreach ($getRecipeCat as $cat){
-                            $nameRecipe= strtolower($cat->getName());
+                    if (!empty($getRecipeCat)) {
+                        foreach ($getRecipeCat as $cat) {
+                            $recipe->addRecipeCategory($cat);
                         }
-                        if(strtolower($category) != $nameRecipe){
-                            $recipeCategory = new RecipeCategory();
-                            $recipeCategory->setName($category);
-                            $recipe->addRecipeCategory($recipeCategory);
-                            $em->persist($recipeCategory);
-                        }else{
-                            foreach($getRecipeCat as $cat){
-                                $recipe->addRecipeCategory($cat);
-                            }
-
-                        }
-                    }elseif(empty($getRecipeCat)){
+                    } elseif (empty($getRecipeCat)) {
                         $recipeCategory = new RecipeCategory();
                         $recipeCategory->setName($category);
                         $recipe->addRecipeCategory($recipeCategory);
@@ -113,18 +92,13 @@ class RecipeController extends Controller {
 
                 $recipe->setName($name);
                 $recipe->setContent($step);
-                $recipe->setUser($user= $this->getUser());
+                $recipe->setUser($user = $this->getUser());
                 $em->persist($recipe);
                 $em->flush();
-
-                return $this->redirectToRoute('homepage');
-
-            } else{
-                return $this->redirectToRoute('homepage');
             }
         }
 
-        return $this->render("default/home.html.twig");
+        return $this->redirectToRoute('homepage');
     }
 
 
