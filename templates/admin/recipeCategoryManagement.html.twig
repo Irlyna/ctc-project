@@ -12,13 +12,11 @@
                 <div class="dataContent">
                     <p class="editInput" title="name">{{ category.name }}</p>
                     <div class="action" align="center">
-                        <button type="submit" name='submit'>
+                        <button type="submit" name="modify">
                             <i class="fas fa-pen"></i>
                         </button>
-                        <button>
-                            <a href="{{ path('category.delete', {'recipeCategoryId' : category.id}) }}">
-                                <i class="far fa-trash-alt"></i>
-                            </a>
+                        <button type="submit" name="delete">
+                            <i class="far fa-trash-alt"></i>
                         </button>
                     </div>
                 </div>

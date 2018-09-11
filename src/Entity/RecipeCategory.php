@@ -37,6 +37,10 @@ class RecipeCategory
         $this->recipes = new ArrayCollection();
     }
 
+    public function removeRecipe(Recipe $recipe){
+        $this->recipes->removeElement($recipe);
+    }
+
     //*****************************
     //      GETTER - SETTER
     //*****************************
